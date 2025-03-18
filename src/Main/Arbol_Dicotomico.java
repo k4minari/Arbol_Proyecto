@@ -4,6 +4,10 @@
  */
 package Main;
 
+import Logica.ArbolDicotomico;
+import java.io.File;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author francisco
@@ -14,7 +18,16 @@ public class Arbol_Dicotomico {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+         ArbolDicotomico arbol = new ArbolDicotomico();
+
+      
+        arbol.seleccionarYcargarArchivo();
+
+        
+        arbol.imprimirArbol();
+
+     
+    
     }
     
 }

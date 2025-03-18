@@ -28,11 +28,9 @@ public class Menu1 extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         unimet = new javax.swing.JLabel();
-        buscar = new javax.swing.JLabel();
         titulo3 = new javax.swing.JLabel();
         cargar = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
-        tabla_2 = new javax.swing.JLabel();
         tabla = new javax.swing.JLabel();
         arboles = new javax.swing.JLabel();
         plantas1 = new javax.swing.JLabel();
@@ -68,12 +66,6 @@ public class Menu1 extends javax.swing.JFrame {
         unimet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo-unimet-6.png"))); // NOI18N
         jPanel1.add(unimet, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 70, 80, 40));
 
-        buscar.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        buscar.setForeground(new java.awt.Color(255, 255, 255));
-        buscar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        buscar.setText("BUSCAR");
-        jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 160, 60));
-
         titulo3.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
         titulo3.setForeground(new java.awt.Color(255, 255, 255));
         titulo3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -84,16 +76,13 @@ public class Menu1 extends javax.swing.JFrame {
         cargar.setForeground(new java.awt.Color(255, 255, 255));
         cargar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         cargar.setText("CARGAR");
-        jPanel1.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 170, 60));
+        jPanel1.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 170, 60));
 
         titulo1.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
         titulo1.setForeground(new java.awt.Color(255, 255, 255));
         titulo1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         titulo1.setText("ARBOL");
         jPanel1.add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, 50));
-
-        tabla_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
-        jPanel1.add(tabla_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, -1));
 
         tabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 380, 190));
@@ -114,10 +103,10 @@ public class Menu1 extends javax.swing.JFrame {
         jPanel1.add(plantas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         tabla_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
-        jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
+        jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
 
         rama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/39-392656_ramas-hojas-freetoedit-rama-de-hojas-png-removebg-preview.png"))); // NOI18N
-        jPanel1.add(rama, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 280, -1));
+        jPanel1.add(rama, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 280, -1));
 
         rama1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/39-392656_ramas-hojas-freetoedit-rama-de-hojas-png-removebg-preview.png"))); // NOI18N
         jPanel1.add(rama1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
@@ -189,7 +178,6 @@ public class Menu1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arboles;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel buscar;
     private javax.swing.JLabel cargar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel plantas1;
@@ -199,7 +187,6 @@ public class Menu1 extends javax.swing.JFrame {
     private javax.swing.JLabel rama;
     private javax.swing.JLabel rama1;
     private javax.swing.JLabel tabla;
-    private javax.swing.JLabel tabla_2;
     private javax.swing.JLabel tabla_3;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo3;

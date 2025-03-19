@@ -5,6 +5,9 @@ package Logica;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+import EDDauxiliares.InfoEspecie;
+import EDDauxiliares.Step;
+import EDDauxiliares.StepList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
@@ -124,5 +127,42 @@ public class ArbolDicotomico {
             imprimirRecursivo(nodo.respuestaNo, prefijo + "  ->NO-> ");
         }
     }
+    public void construirIndice(TablaHash hashTable) {
+        StepList path = new StepList();
+        construirIndiceRec(raiz, path, hashTable);
+    }
+
+    private void construirIndiceRec(NodoArbol nodo, StepList path, TablaHash hashTable) {
+        if (nodo == null) {
+            return;
+        }
+
+        // Si es hoja
+        if (nodo.especie != null) {
+            // hacemos copia de la lista de pasos
+            StepList rutaFinal = path.copy();  
+            InfoEspecie info = new InfoEspecie(nodo, rutaFinal);
+            // Insertamos en la tabla hash: clave = nombre especie, valor = InfoEspecie
+            hashTable.insertar(nodo.especie, info);
+            return;
+        }
+
+        // Si el nodo actual es de pregunta, recorremos su rama SI
+        if (nodo.respuestaSi != null) {
+            // Añadimos un Step con la pregunta actual y respuesta = true
+            path.add(new Step(nodo.pregunta, true));
+            construirIndiceRec(nodo.respuestaSi, path, hashTable);
+            // removeLast para volver al estado anterior
+            path.removeLast();
+        }
+        
+        // Recorremos la rama NO
+        if (nodo.respuestaNo != null) {
+            path.add(new Step(nodo.pregunta, false));
+            construirIndiceRec(nodo.respuestaNo, path, hashTable);
+            path.removeLast();
+        }
+    }
 }
+
 

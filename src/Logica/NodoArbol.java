@@ -11,7 +11,7 @@ public class NodoArbol {
     String pregunta;
     NodoArbol respuestaSi;
     NodoArbol respuestaNo;
-    String especie;
+    public String especie;
 
     // Constructor para nodos de pregunta
     public NodoArbol(String pregunta) {

@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.*;
 import java.io.File;
+import java.util.Scanner;
 
 public class ArbolDicotomico {
     private NodoArbol raiz;
@@ -163,6 +164,28 @@ public class ArbolDicotomico {
             path.removeLast();
         }
     }
+    public void iniciarBusquedaInteractiva() {
+    NodoArbol actual = raiz;
+    Scanner sc = new Scanner(System.in);
+
+    while (actual != null) {
+        // Si es hoja
+        if (actual.especie != null) {
+            System.out.println("La especie identificada es: " + actual.especie);
+            return;
+        }
+        // Caso contrario, mostramos la pregunta
+        System.out.println(actual.pregunta + " (S/N)");
+        String respuesta = sc.nextLine().trim().toUpperCase();
+
+        if (respuesta.startsWith("S")) {
+            actual = actual.respuestaSi;
+        } else {
+            actual = actual.respuestaNo;
+        }
+    }
+}
+
 }
 
 

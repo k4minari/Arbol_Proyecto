@@ -56,6 +56,7 @@ public class Arbol_Dicotomico {
         } else {
             System.out.println("No se encontro la especie: " + especieBuscada);
         }
+        arbol.iniciarBusquedaInteractiva();
     
     }
     

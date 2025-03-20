@@ -22,11 +22,8 @@ public class TablaHash {
 
     // Funcion de dispersion muy simple
     private int hashFunc(String key) {
-        int hash = 0;
-        for (int i = 0; i < key.length(); i++) {
-            hash += key.charAt(i);
-        }
-        return Math.abs(hash) % capacity;
+        int h = key.hashCode(); 
+        return Math.abs(h) % capacity;
     }
 
     public void insertar(String key, InfoEspecie value) {
@@ -66,4 +63,30 @@ public class TablaHash {
         }
         return null; // no encontrado
     }
+     public int countElements() {
+        int count = 0;
+        for (int i = 0; i < capacity; i++) {
+            EntryNode nodo = table[i];
+            while (nodo != null) {
+                count++;
+                nodo = nodo.next;
+            }
+        }
+        return count;
+    }
+
+    public String[] getAllKeys() {
+        int total = countElements();
+        String[] keys = new String[total];
+        int idx = 0;
+
+        for (int i = 0; i < capacity; i++) {
+            EntryNode nodo = table[i];
+            while (nodo != null) {
+                keys[idx] = nodo.key;
+                idx++;
+                nodo = nodo.next;
+            }
+        }
+        return keys;}
 }

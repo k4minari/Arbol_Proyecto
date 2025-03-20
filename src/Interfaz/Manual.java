@@ -27,18 +27,15 @@ public class Manual extends javax.swing.JFrame {
 
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        manual3 = new javax.swing.JLabel();
-        manual4 = new javax.swing.JLabel();
-        manual2 = new javax.swing.JLabel();
-        manual1 = new javax.swing.JLabel();
-        manual = new javax.swing.JLabel();
-        cargar = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        regresar = new javax.swing.JLabel();
         tabla_3 = new javax.swing.JLabel();
+        tabla1 = new javax.swing.JLabel();
         plantas1 = new javax.swing.JLabel();
         plantas2 = new javax.swing.JLabel();
         plantas3 = new javax.swing.JLabel();
         plantas4 = new javax.swing.JLabel();
-        tabla1 = new javax.swing.JLabel();
         tabla = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -65,80 +62,35 @@ public class Manual extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manual3.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        manual3.setForeground(new java.awt.Color(255, 255, 255));
-        manual3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manual3.setText("Directa");
-        manual3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manual3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manual3MouseClicked(evt);
-            }
-        });
-        jPanel1.add(manual3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 140, 40));
+        jButton1.setBackground(new java.awt.Color(0, 102, 51));
+        jButton1.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("No");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
 
-        manual4.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        manual4.setForeground(new java.awt.Color(255, 255, 255));
-        manual4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manual4.setText("CARGAR");
-        manual4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manual4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manual4MouseClicked(evt);
-            }
-        });
-        jPanel1.add(manual4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, -1, 50));
+        jButton3.setBackground(new java.awt.Color(0, 102, 51));
+        jButton3.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Si");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
-        manual2.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        manual2.setForeground(new java.awt.Color(255, 255, 255));
-        manual2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manual2.setText("Busqueda");
-        manual2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manual2.addMouseListener(new java.awt.event.MouseAdapter() {
+        regresar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        regresar.setForeground(new java.awt.Color(255, 255, 255));
+        regresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar.setText("<<REGRESAR");
+        regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manual2MouseClicked(evt);
+                regresarMouseClicked(evt);
             }
         });
-        jPanel1.add(manual2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 140, 50));
-
-        manual1.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        manual1.setForeground(new java.awt.Color(255, 255, 255));
-        manual1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manual1.setText("Manual");
-        manual1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manual1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manual1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(manual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, 40));
-
-        manual.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        manual.setForeground(new java.awt.Color(255, 255, 255));
-        manual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manual.setText("Busqueda");
-        manual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manual.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manualMouseClicked(evt);
-            }
-        });
-        jPanel1.add(manual, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 140, 30));
-
-        cargar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        cargar.setForeground(new java.awt.Color(255, 255, 255));
-        cargar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cargar.setText("<<REGRESAR");
-        cargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cargarMouseClicked(evt);
-            }
-        });
-        jPanel1.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 60));
+        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 60));
 
         tabla_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
         jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
+        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 90, 300, 200));
 
         plantas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_1.png"))); // NOI18N
         jPanel1.add(plantas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, -1, -1));
@@ -152,17 +104,14 @@ public class Manual extends javax.swing.JFrame {
         plantas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_3.png"))); // NOI18N
         jPanel1.add(plantas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 150, 300, 200));
-
         tabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 300, 200));
+        jPanel1.add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 300, 200));
 
         tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 200));
+        jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 300, 200));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 460));
 
@@ -192,31 +141,11 @@ public class Manual extends javax.swing.JFrame {
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_bgMouseDragged
 
-    private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
-        Menu1 menu = new Menu1();
-        menu.setVisible(true);
+    private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
+        Pagina1 pagina = new Pagina1();
+        pagina.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_cargarMouseClicked
-
-    private void manualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manualMouseClicked
-
-    private void manual1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manual1MouseClicked
-
-    private void manual2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manual2MouseClicked
-
-    private void manual3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manual3MouseClicked
-
-    private void manual4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manual4MouseClicked
+    }//GEN-LAST:event_regresarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -256,18 +185,15 @@ public class Manual extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel cargar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel manual;
-    private javax.swing.JLabel manual1;
-    private javax.swing.JLabel manual2;
-    private javax.swing.JLabel manual3;
-    private javax.swing.JLabel manual4;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
+    private javax.swing.JLabel regresar;
     private javax.swing.JLabel tabla;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;

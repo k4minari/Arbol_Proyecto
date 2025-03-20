@@ -22,6 +22,13 @@ public class ArbolDicotomico {
     public ArbolDicotomico() {
         this.raiz = null;
     }
+    public boolean estaVacio() {
+        return (raiz == null);
+    }
+
+    public NodoArbol getRaiz() {
+        return raiz;
+    }
 
     public void seleccionarYcargarArchivo() {
         JFileChooser fileChooser = new JFileChooser();

@@ -63,4 +63,30 @@ public class TablaHash {
         }
         return null; // no encontrado
     }
+     public int countElements() {
+        int count = 0;
+        for (int i = 0; i < capacity; i++) {
+            EntryNode nodo = table[i];
+            while (nodo != null) {
+                count++;
+                nodo = nodo.next;
+            }
+        }
+        return count;
+    }
+
+    public String[] getAllKeys() {
+        int total = countElements();
+        String[] keys = new String[total];
+        int idx = 0;
+
+        for (int i = 0; i < capacity; i++) {
+            EntryNode nodo = table[i];
+            while (nodo != null) {
+                keys[idx] = nodo.key;
+                idx++;
+                nodo = nodo.next;
+            }
+        }
+        return keys;}
 }

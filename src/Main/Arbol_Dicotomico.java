@@ -8,6 +8,7 @@ import EDDauxiliares.InfoEspecie;
 import EDDauxiliares.Step;
 import EDDauxiliares.StepList;
 import Logica.ArbolDicotomico;
+import Logica.GraphStreamArbol;
 import Logica.NodoArbol;
 import Logica.TablaHash;
 import java.io.File;
@@ -56,6 +57,22 @@ public class Arbol_Dicotomico {
         } else {
             System.out.println("No se encontro la especie: " + especieBuscada);
         }
+        String[] todasLasEspecies = tabla.getAllKeys();
+        
+        // 4. Imprimir por consola
+        System.out.println("=== CLAVES EN LA TABLA HASH ===");
+        for (String especie : todasLasEspecies) {
+            System.out.println(" - " + especie);}
+        // 2. Crear instancia de la clase que construye el grafo
+        GraphStreamArbol grafoArbol = new GraphStreamArbol("Arbol Dicotomico");
+
+        // 3. Construir la representacion con el arbol
+        grafoArbol.construir(arbol);
+
+        // 4. Mostrarlo
+        grafoArbol.mostrar();
+
+        // Listo: aparece la ventana de GraphStream con los nodos y aristas
         arbol.iniciarBusquedaInteractiva();
     
     }

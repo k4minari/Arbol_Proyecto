@@ -8,11 +8,11 @@ package Interfaz;
  *
  * @author ile1
  */
-public class Pagina1 extends javax.swing.JFrame {
+public class Manual extends javax.swing.JFrame {
 
     int mouseX, mouseY;
     
-    public Pagina1() {
+    public Manual() {
         initComponents();
     }
 
@@ -41,7 +41,7 @@ public class Pagina1 extends javax.swing.JFrame {
         tabla1 = new javax.swing.JLabel();
         tabla = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
-        arbol = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -161,8 +161,8 @@ public class Pagina1 extends javax.swing.JFrame {
         tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 200));
 
-        arbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
-        jPanel1.add(arbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 460));
 
@@ -255,9 +255,9 @@ public class Pagina1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel arbol;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel cargar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel manual;
     private javax.swing.JLabel manual1;

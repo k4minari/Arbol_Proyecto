@@ -14,6 +14,7 @@ import Logica.NodoArbol;
 import Logica.TablaHash;
 import java.io.File;
 import javax.swing.JFileChooser;
+import Interfaz.Menu1;
 
 /**
  *
@@ -32,6 +33,9 @@ public class Arbol_Dicotomico {
 
         
         arbol.imprimirArbol();
+        
+         Menu1 menu = new Menu1(); // deberia ejecutarse primero
+         menu.setVisible(true);
 
        // 2. Crear la tabla hash
         TablaHash tabla = new TablaHash(50); // capacidad arbitraria

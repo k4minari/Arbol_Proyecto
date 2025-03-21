@@ -4,6 +4,14 @@
  */
 package Interfaz;
 
+import EDDauxiliares.InfoEspecie;
+import EDDauxiliares.Step;
+import EDDauxiliares.StepList;
+import Logica.ArbolDicotomico;
+import Logica.CalculoTiempos;
+import Logica.GraphStreamArbol;
+import Logica.NodoArbol;
+import Logica.TablaHash;
 /**
  *
  * @author ile1
@@ -167,6 +175,8 @@ public class Menu1 extends javax.swing.JFrame {
     }//GEN-LAST:event_XMouseClicked
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
+        // >>>>>>>> CARGAR
+        
         Pagina1 pagina = new Pagina1();
         pagina.setVisible(true);
         this.setVisible(false);

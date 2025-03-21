@@ -8,11 +8,11 @@ package Interfaz;
  *
  * @author ile1
  */
-public class Manual extends javax.swing.JFrame {
+public class Directa extends javax.swing.JFrame {
 
     int mouseX, mouseY;
     
-    public Manual() {
+    public Directa() {
         initComponents();
     }
 
@@ -27,20 +27,22 @@ public class Manual extends javax.swing.JFrame {
 
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         regresar = new javax.swing.JLabel();
+        regresar3 = new javax.swing.JLabel();
+        regresar2 = new javax.swing.JLabel();
+        regresar1 = new javax.swing.JLabel();
         tabla_3 = new javax.swing.JLabel();
         tabla1 = new javax.swing.JLabel();
         plantas1 = new javax.swing.JLabel();
         plantas2 = new javax.swing.JLabel();
         plantas3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         plantas4 = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        tabla3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -64,35 +66,59 @@ public class Manual extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 51));
-        jButton1.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("No");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
-
-        jButton3.setBackground(new java.awt.Color(0, 102, 51));
-        jButton3.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Si");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
-
         regresar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
         regresar.setForeground(new java.awt.Color(255, 255, 255));
         regresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regresar.setText("<<REGRESAR");
+        regresar.setText("HASHTABLE");
         regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regresarMouseClicked(evt);
             }
         });
-        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 60));
+        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 190, 60));
+
+        regresar3.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        regresar3.setForeground(new java.awt.Color(255, 255, 255));
+        regresar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar3.setText("Ver tiempo");
+        regresar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(regresar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 190, 60));
+
+        regresar2.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        regresar2.setForeground(new java.awt.Color(255, 255, 255));
+        regresar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar2.setText("ARBOL");
+        regresar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(regresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 190, 60));
+
+        regresar1.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        regresar1.setForeground(new java.awt.Color(255, 255, 255));
+        regresar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar1.setText("<<REGRESAR");
+        regresar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(regresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 60));
 
         tabla_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
         jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 90, 300, 200));
+        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 300, 70));
 
         plantas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_1.png"))); // NOI18N
         jPanel1.add(plantas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, -1, -1));
@@ -103,39 +129,43 @@ public class Manual extends javax.swing.JFrame {
         plantas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_2.png"))); // NOI18N
         jPanel1.add(plantas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 110, 30));
+
         plantas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_3.png"))); // NOI18N
         jPanel1.add(plantas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 300, 200));
+        jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 300, 100));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 190));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 0));
 
-        jLabel2.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("DE RECORRIDO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, 40));
-
-        jLabel3.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("VER ARBOL ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, 120));
-
-        jPanel3.setBackground(new java.awt.Color(117, 91, 50));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 230, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 230, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 460));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 420, 170));
+
+        tabla3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
+        jPanel1.add(tabla3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 300, 100));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 460));
 
@@ -166,10 +196,26 @@ public class Manual extends javax.swing.JFrame {
     }//GEN-LAST:event_bgMouseDragged
 
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
+
+    }//GEN-LAST:event_regresarMouseClicked
+
+    private void regresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar1MouseClicked
         Pagina1 pagina = new Pagina1();
         pagina.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_regresarMouseClicked
+    }//GEN-LAST:event_regresar1MouseClicked
+
+    private void regresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regresar2MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void regresar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regresar3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -209,20 +255,22 @@ public class Manual extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
     private javax.swing.JLabel regresar;
+    private javax.swing.JLabel regresar1;
+    private javax.swing.JLabel regresar2;
+    private javax.swing.JLabel regresar3;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;
+    private javax.swing.JLabel tabla3;
     private javax.swing.JLabel tabla_3;
     // End of variables declaration//GEN-END:variables
 }

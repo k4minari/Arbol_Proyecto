@@ -213,7 +213,9 @@ public class Pagina1 extends javax.swing.JFrame {
     }//GEN-LAST:event_siMouseClicked
 
     private void DirectaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DirectaMouseClicked
-        // TODO add your handling code here:
+        Directa directa = new Directa();
+        directa.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_DirectaMouseClicked
 
     private void CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarMouseClicked

@@ -5,111 +5,130 @@
 package Logica;
 
 import EDDauxiliares.NodoIdPair;
+import javax.swing.JOptionPane;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
- * Clase que construye y muestra un ArbolDicotomico en GraphStream,
- * sin usar colecciones de java.util.* para almacenar las parejas (nodo, id).
+ * Clase que construye y muestra un ArbolDicotomico en GraphStream
  */
 public class GraphStreamArbol {
-    private Graph graph;
-    
-    // Almacenaremos (NodoArbol, idString) en un array propio:
-    private NodoIdPair[] nodoIds; 
-    private int size;       // cantidad actual de pares almacenados
-    private int capacity;   // capacidad del array nodoIds
-
-    // Guardamos la raíz del árbol para ubicarla manualmente.
-    private NodoArbol raiz;
-
 
     /**
-     * Constructor: inicializa el grafo y el array dinámico.
+     * Grafo de GraphStream donde se visualizará el arbol.
+     */
+    private Graph graph;
+
+    /**
+     * Arreglo que almacena pares (NodoArbol, String id).
+     */
+    private NodoIdPair[] nodoIds;
+
+    /**
+     * Cantidad actual de pares almacenados en nodoIds.
+     */
+    private int size;
+
+    /**
+     * Capacidad del arreglo nodoIds.
+     */
+    private int capacity;
+
+    /**
+     * Raíz del arbol, la usaremos para posicionar manualmente la vista.
+     */
+    private NodoArbol raiz;
+
+    /**
+     * Constructor: inicializa el grafo y el array dinámico para manejar los pares (nodo, id).
+     * 
      * @param nombreGrafo Nombre que se le dará internamente al grafo GraphStream.
      */
     public GraphStreamArbol(String nombreGrafo) {
+        // Creamos el grafo con el nombre
         graph = new SingleGraph(nombreGrafo);
 
-        // Inicializamos nuestro array “casero” de 100 pares inicialmente.
+        // Iniciamos el array "casero"
         capacity = 100;
         nodoIds = new NodoIdPair[capacity];
         size = 0;
 
-        raiz = null;  // aún no definimos la raíz
+        raiz = null;  // la raíz se asignará cuando construyamos el arbol
         aplicarEstilos();
     }
 
     /**
      * Construye el grafo a partir de un ArbolDicotomico.
-     * @param arbol El ArbolDicotomico del cual tomar datos.
+     * Genera de forma recursiva los nodos y las aristas.
+     * 
+     * @param arbol El ArbolDicotomico del cual extraeremos la estructura.
      */
     public void construir(ArbolDicotomico arbol) {
         if (arbol == null || arbol.estaVacio()) {
-            System.out.println("El arbol esta vacio o nulo, no se construira el grafo.");
+            JOptionPane.showMessageDialog(null, "El arbol esta vacio o nulo, no se construira el grafo.");
             return;
         }
-        // Obtenemos la raiz del arbol y la guardamos
+        // Obtenemos la raiz
         raiz = arbol.getRaiz();
-
-        // Generamos recursivamente nodos y aristas
+        // Generamos las ramas
         generarGrafo(raiz, null, false);
     }
 
     /**
-     * Muestra el grafo en pantalla con layout manual (sin autolayout).
-     * Ubica la raiz en (0,0) y expande hacia abajo.
+     * Muestra el grafo en pantalla con un layout manual.
+     * Posiciona la raiz en (0,0) y expande el arbol hacia abajo.
+     * Ademas, evita que cerrar la ventana termine la aplicacion completa.
      */
     public void mostrar() {
-        // Desactivamos el layout automático
+        // Desactivamos layout automático
         System.setProperty("org.graphstream.ui", "swing");
         System.setProperty("org.graphstream.ui.renderer","org.graphstream.ui.j2dviewer.J2DGraphRenderer");
 
-        // La llamada con 'false' deshabilita el layout por defecto
-        graph.display(false);
+        // Capturamos el Viewer para controlar la politica de cierre
+        Viewer viewer = graph.display(false);
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
 
-        // Asignamos posiciones manuales si la raiz no es nula
         if (raiz != null) {
-            // Aumentamos la separación horizontal a 450
-            // y la vertical la mantenemos en 140 dentro del método
+            // Ajusta la separacion horizontal y vertical si es necesario
             posicionarNodos(raiz, 0, 0, 450);
         }
     }
 
     /**
-     * Genera nodos y aristas (recursivo).
-     * @param nodo     NodoArbol actual
-     * @param parentId ID del padre en el grafo (null si es la raiz)
+     * Genera (de forma recursiva) los nodos y aristas de GraphStream
+     * a partir de la estructura del ArbolDicotomico.
+     * 
+     * @param nodo     NodoArbol actual (o subraiz)
+     * @param parentId Identificador del padre en el grafo (null si es la raiz)
      * @param esSi     Indica si la rama es "SI" (true) o "NO" (false)
      */
     private void generarGrafo(NodoArbol nodo, String parentId, boolean esSi) {
         if (nodo == null) return;
 
-        // Creamos un ID unico en base a la referencia del objeto
+        // ID unico en base a la referencia del objeto
         String nodoId = crearIdUnico(nodo);
 
-        // Si el nodo no existe en el grafo, lo añadimos
+        // Si aun no existe un nodo en el grafo con este id, lo creamos
         if (graph.getNode(nodoId) == null) {
-            // Almacenamos (nodo, nodoId) en nuestro array
             putPair(nodo, nodoId);
 
-            // Creamos el nodo en GraphStream
             Node gNode = graph.addNode(nodoId);
 
-            // Distinguimos hoja (especie) de nodo intermedio/raiz (pregunta)
-            if (nodo.especie != null) {
-                gNode.setAttribute("ui.label", nodo.especie);
+            // Distinguimos entre hoja (especie) y nodo intermedio/raiz (pregunta)
+            if (nodo.getEspecie() != null) {
+                gNode.setAttribute("ui.label", nodo.getEspecie());
                 gNode.setAttribute("ui.class", "leaf");
             } else {
-                gNode.setAttribute("ui.label", nodo.pregunta);
-                // Si no tiene parentId => es la raiz => class root
+                gNode.setAttribute("ui.label", nodo.getPregunta());
+                // "root" si parentId == null, sino "internal"
                 gNode.setAttribute("ui.class", (parentId == null) ? "root" : "internal");
             }
         }
 
-        // Conectamos la arista con el padre
+        // Conectamos este nodo con el padre si no es la raiz
         if (parentId != null) {
             String edgeId = parentId + "->" + nodoId;
             if (graph.getEdge(edgeId) == null) {
@@ -118,52 +137,49 @@ public class GraphStreamArbol {
             }
         }
 
-        // Llamada recursiva para rama SI
-        generarGrafo(nodo.respuestaSi, nodoId, true);
-        // Llamada recursiva para rama NO
-        generarGrafo(nodo.respuestaNo, nodoId, false);
+        // Recursivo para rama SI y NO
+        generarGrafo(nodo.getRespuestaSi(), nodoId, true);
+        generarGrafo(nodo.getRespuestaNo(), nodoId, false);
     }
 
     /**
-     * Asigna posición (x,y) a cada nodo para crear un arbol
-     * vertical (la raiz arriba, hojas abajo).
-     * @param nodo Nodo actual
-     * @param x    coordenada horizontal
-     * @param y    coordenada vertical
-     * @param dx   separación horizontal para las ramas hijas
+     * Asigna posicion (x, y) a cada nodo para dibujar
+     * un arbol de arriba hacia abajo.
+     * 
+     * @param nodo Nodo actual (o subraiz) del arbol
+     * @param x    Coordenada horizontal
+     * @param y    Coordenada vertical
+     * @param dx   Separacion horizontal para las ramas
      */
     private void posicionarNodos(NodoArbol nodo, double x, double y, double dx) {
         if (nodo == null) return;
 
-        // Obtenemos el id con nuestro array
         String id = getId(nodo);
         if (id != null) {
             Node gNode = graph.getNode(id);
-            // set xyz => la z=0 (2D)
+            // z=0 para 2D
             gNode.setAttribute("xyz", x, y, 0);
         }
 
-        // Bajamos el nivel vertical (más abajo => mayor Y)
-        double newY = y + 140;  // vertical separation
-        // Reducimos dx levemente para que no se superpongan
+        // Bajamos en vertical +140
+        double newY = y + 140;
+        // Reducimos dx en un factor para que no se expandan indefinidamente
         double newDx = dx / 1.5;
 
         // Rama SI a la izquierda
-        if (nodo.respuestaSi != null) {
-            posicionarNodos(nodo.respuestaSi, x - newDx, newY, newDx);
+        if (nodo.getRespuestaSi() != null) {
+            posicionarNodos(nodo.getRespuestaSi(), x - newDx, newY, newDx);
         }
         // Rama NO a la derecha
-        if (nodo.respuestaNo != null) {
-            posicionarNodos(nodo.respuestaNo, x + newDx, newY, newDx);
+        if (nodo.getRespuestaNo() != null) {
+            posicionarNodos(nodo.getRespuestaNo(), x + newDx, newY, newDx);
         }
     }
 
-    // ------------------------------------------------
-    // Métodos para manejar nuestro array de pares (nodo, id)
-    // ------------------------------------------------
-
     /**
-     * Inserta un par (nodo, id) en el array, expandiendo si es necesario.
+     * Inserta un par (nodo, id) en el array de pares, expandiendo si es necesario.
+     * @param nodo NodoArbol que queremos mapear
+     * @param id   Identificador (String) del nodo en el grafo
      */
     private void putPair(NodoArbol nodo, String id) {
         if (size == capacity) {
@@ -174,7 +190,7 @@ public class GraphStreamArbol {
     }
 
     /**
-     * Expande la capacidad del array al doble.
+     * Duplica la capacidad del array cuando esta lleno.
      */
     private void expandArray() {
         capacity *= 2;
@@ -186,59 +202,54 @@ public class GraphStreamArbol {
     }
 
     /**
-     * Busca el id asociado a un nodo (búsqueda lineal en nuestro array).
+     * Retorna el id asociado a un NodoArbol mediante una busqueda lineal en el array.
+     * @param nodo NodoArbol a buscar
+     * @return El identificador String si se encuentra, o null en caso contrario.
      */
     private String getId(NodoArbol nodo) {
         for (int i = 0; i < size; i++) {
-            if (nodoIds[i].nodo == nodo) {
-                return nodoIds[i].id;
+            if (nodoIds[i].getNodo() == nodo) {
+                return nodoIds[i].getId();
             }
         }
-        return null; // no encontrado
+        return null;
     }
 
-    // ------------------------------------------------
-    // Otros Métodos Auxiliares
-    // ------------------------------------------------
-
     /**
-     * Genera un ID unico en hexadecimal a partir de la referencia de un NodoArbol.
+     * Genera un id unico en hexadecimal segun la referencia de memoria del NodoArbol.
+     * @param nodo NodoArbol para el cual generamos el id
+     * @return String con el id en hex.
      */
     private String crearIdUnico(NodoArbol nodo) {
         return Integer.toHexString(System.identityHashCode(nodo));
     }
 
     /**
-     * Define una hoja de estilo (CSS) para personalizar nodos y aristas.
+     * Aplica la hoja de estilos (CSS) para personalizar nodos y aristas de GraphStream.
      */
     private void aplicarEstilos() {
         String styleSheet =
             "graph { fill-color: white; }" +
-
             "node {" +
-            "   shape: box;" +              // Recuadro. Usa 'rounded-box' o 'ellipse' si quieres otra forma.
+            "   shape: box;" +
             "   size: 60px, 40px;" +
-            "   text-size: 14;" +           // Texto base
+            "   text-size: 14;" +
             "   text-color: black;" +
             "   text-style: bold;" +
             "   stroke-mode: plain;" +
             "   stroke-color: black;" +
             "   stroke-width: 1px;" +
             "}" +
-            // Raiz (root) en naranja
             "node.root {" +
             "   fill-color: #FFA500;" +
             "}" +
-            // Internos (internal) en marron clarito
             "node.internal {" +
             "   fill-color: #EED5B7;" +
             "}" +
-            // Hojas (leaf) en verde claro y texto un poco más grande
             "node.leaf {" +
             "   fill-color: #ADFFB4;" +
             "   text-size: 16;" +
             "}" +
-            // Estilos de las aristas
             "edge {" +
             "   fill-color: black;" +
             "   size: 2px;" +
@@ -252,8 +263,44 @@ public class GraphStreamArbol {
 
         graph.setAttribute("ui.stylesheet", styleSheet);
     }
+
+    /**
+     * Obtiene la raiz del arbol que se esta graficando.
+     * @return NodoArbol raiz.
+     */
+    public NodoArbol getRaiz() {
+        return raiz;
+    }
+
+    /**
+     * Asigna la raiz del arbol (por si deseas cambiarla).
+     * @param raiz Nuevo nodo raiz.
+     */
+    public void setRaiz(NodoArbol raiz) {
+        this.raiz = raiz;
+    }
+
+    /**
+     * Obtiene la capacidad actual del array de pares.
+     * @return La capacidad (entero).
+     */
+    public int getCapacity() {
+        return capacity;
+    }
+
+    /**
+     * Obtiene el número actual de pares almacenados (size).
+     * @return El tamaño actual (entero).
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * Retorna el objeto Graph interno, en caso de necesitar manipularlo externamente.
+     * @return El grafo de GraphStream.
+     */
+    public Graph getGraph() {
+        return graph;
+    }
 }
-
-
-
-

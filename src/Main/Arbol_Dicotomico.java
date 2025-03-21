@@ -8,6 +8,7 @@ import EDDauxiliares.InfoEspecie;
 import EDDauxiliares.Step;
 import EDDauxiliares.StepList;
 import Logica.ArbolDicotomico;
+import Logica.CalculoTiempos;
 import Logica.GraphStreamArbol;
 import Logica.NodoArbol;
 import Logica.TablaHash;
@@ -39,7 +40,7 @@ public class Arbol_Dicotomico {
         arbol.construirIndice(tabla);
         
         // 4. Probar busqueda
-        String especieBuscada = "Roble Blanco";
+        String especieBuscada = "Magnolia";
         InfoEspecie info = tabla.buscar(especieBuscada);
         
         if (info != null) {
@@ -53,7 +54,7 @@ public class Arbol_Dicotomico {
             
             // Mostrar el nodo hoja (comprobacion)
             NodoArbol hoja = info.getLeaf();
-            System.out.println("Nodo hoja -> " + hoja.especie);
+            System.out.println("Nodo hoja -> " + hoja.getEspecie());
         } else {
             System.out.println("No se encontro la especie: " + especieBuscada);
         }
@@ -65,7 +66,13 @@ public class Arbol_Dicotomico {
             System.out.println(" - " + especie);}
         // 2. Crear instancia de la clase que construye el grafo
         GraphStreamArbol grafoArbol = new GraphStreamArbol("Arbol Dicotomico");
+        CalculoTiempos calc = new CalculoTiempos(arbol, tabla);
 
+        // 4) Pedimos la comparacion
+      
+        String resultado = calc.compararTiempos(especieBuscada);
+
+        System.out.println(resultado);
         // 3. Construir la representacion con el arbol
         grafoArbol.construir(arbol);
 

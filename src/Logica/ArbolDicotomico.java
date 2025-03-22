@@ -8,6 +8,7 @@ package Logica;
 import EDDauxiliares.InfoEspecie;
 import EDDauxiliares.Step;
 import EDDauxiliares.StepList;
+import Interfaz.Manual;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
@@ -138,8 +139,6 @@ public class ArbolDicotomico {
      */
 
 
-
-
 public void iniciarBusquedaInteractivaConVisual() {
     NodoArbol actual = this.getRaiz();
     StepList pasos = new StepList();
@@ -158,6 +157,7 @@ public void iniciarBusquedaInteractivaConVisual() {
             if (opcionFinal == 0) {
                 GraphStreamArbol grafoRecorrido = new GraphStreamArbol("Recorrido final");
                 grafoRecorrido.mostrarRecorridoDesdeRaiz(this.getRaiz(), pasos);
+
             }
 
             if (opcionFinal == 2) {

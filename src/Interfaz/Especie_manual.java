@@ -27,7 +27,7 @@ public class Especie_manual extends javax.swing.JFrame {
 
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        titulo3 = new javax.swing.JLabel();
+        resul = new javax.swing.JLabel();
         arbol = new javax.swing.JLabel();
         cargar1 = new javax.swing.JLabel();
         tabla_3 = new javax.swing.JLabel();
@@ -63,11 +63,11 @@ public class Especie_manual extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        titulo3.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
-        titulo3.setForeground(new java.awt.Color(255, 255, 255));
-        titulo3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        titulo3.setText("Buscando...");
-        jPanel1.add(titulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, 50));
+        resul.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
+        resul.setForeground(new java.awt.Color(255, 255, 255));
+        resul.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        resul.setText("Buscando...");
+        jPanel1.add(resul, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, 50));
 
         arbol.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
         arbol.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,11 +209,11 @@ public class Especie_manual extends javax.swing.JFrame {
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
     private javax.swing.JLabel rama;
+    public javax.swing.JLabel resul;
     private javax.swing.JLabel tabla;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla_3;
     private javax.swing.JLabel tabla_4;
     private javax.swing.JLabel titulo1;
-    private javax.swing.JLabel titulo3;
     // End of variables declaration//GEN-END:variables
 }

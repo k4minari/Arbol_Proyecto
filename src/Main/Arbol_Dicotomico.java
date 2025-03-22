@@ -82,10 +82,10 @@ public class Arbol_Dicotomico {
         grafoArbol.construir(arbol);
 
         // 4. Mostrarlo
-        grafoArbol.mostrar();*/
+        grafoArbol.mostrar();
 
         // Listo: aparece la ventana de GraphStream con los nodos y aristas
-        arbol.iniciarBusquedaInteractivaConVisual();
+        arbol.iniciarBusquedaInteractivaConVisual();*/
     
     }
     

@@ -21,8 +21,6 @@ import java.util.Scanner;
  * @author ile1
  */
 public class Pagina1 extends javax.swing.JFrame {
-    
-    ArbolDicotomico arbol = new ArbolDicotomico();
 
     int mouseX, mouseY;
     
@@ -43,7 +41,6 @@ public class Pagina1 extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         Directa = new javax.swing.JLabel();
-        Cargar = new javax.swing.JLabel();
         si = new javax.swing.JLabel();
         manual1 = new javax.swing.JLabel();
         si1 = new javax.swing.JLabel();
@@ -54,7 +51,6 @@ public class Pagina1 extends javax.swing.JFrame {
         plantas3 = new javax.swing.JLabel();
         plantas4 = new javax.swing.JLabel();
         tabla1 = new javax.swing.JLabel();
-        tabla = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
         Arbol = new javax.swing.JLabel();
 
@@ -91,18 +87,6 @@ public class Pagina1 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Directa, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 140, 80));
-
-        Cargar.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        Cargar.setForeground(new java.awt.Color(255, 255, 255));
-        Cargar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Cargar.setText("CARGAR");
-        Cargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Cargar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CargarMouseClicked(evt);
-            }
-        });
-        jPanel1.add(Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, -1, 50));
 
         si.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
         si.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,9 +154,6 @@ public class Pagina1 extends javax.swing.JFrame {
         tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 150, 300, 200));
 
-        tabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 300, 200));
-
         tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 200));
 
@@ -219,10 +200,12 @@ public class Pagina1 extends javax.swing.JFrame {
 
     private void manual1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual1MouseClicked
 
-        arbol.seleccionarYcargarArchivo();
         Manual manual = new Manual();
         manual.setVisible(true);
         this.setVisible(false);
+        ArbolDicotomico arbol = new ArbolDicotomico();
+        arbol.seleccionarYcargarArchivo();
+        arbol.iniciarBusquedaInteractivaConVisual();
         
     }//GEN-LAST:event_manual1MouseClicked
 
@@ -234,12 +217,8 @@ public class Pagina1 extends javax.swing.JFrame {
         Directa directa = new Directa();
         directa.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_DirectaMouseClicked
-
-    private void CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarMouseClicked
-        ArbolDicotomico arbol = new ArbolDicotomico();
-        arbol.seleccionarYcargarArchivo();
-    }//GEN-LAST:event_CargarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -279,7 +258,6 @@ public class Pagina1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Arbol;
-    private javax.swing.JLabel Cargar;
     private javax.swing.JLabel Directa;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel jPanel1;
@@ -291,7 +269,6 @@ public class Pagina1 extends javax.swing.JFrame {
     private javax.swing.JLabel regresar;
     private javax.swing.JLabel si;
     private javax.swing.JLabel si1;
-    private javax.swing.JLabel tabla;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;
     private javax.swing.JLabel tabla_3;

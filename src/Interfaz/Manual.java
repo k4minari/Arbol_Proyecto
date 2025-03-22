@@ -5,20 +5,24 @@
 package Interfaz;
 
 import Logica.ArbolDicotomico;
-
+import EDDauxiliares.Step;
+import EDDauxiliares.StepList;
+import Logica.GraphStreamArbol;
+import Logica.NodoArbol;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ile1
  */
 public class Manual extends javax.swing.JFrame {
     
-    ArbolDicotomico arbol = new ArbolDicotomico();
+
 
     int mouseX, mouseY;
     
     public Manual() {
+        
         initComponents();
-        arbol.iniciarBusquedaInteractiva();
     }
 
     /**
@@ -32,7 +36,9 @@ public class Manual extends javax.swing.JFrame {
 
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        cargar = new javax.swing.JLabel();
+        tabla_4 = new javax.swing.JLabel();
+        no = new javax.swing.JButton();
         si = new javax.swing.JButton();
         Pregunta = new javax.swing.JLabel();
         regresar = new javax.swing.JLabel();
@@ -45,7 +51,7 @@ public class Manual extends javax.swing.JFrame {
         tabla2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        VerArbol = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,11 +76,26 @@ public class Manual extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 51));
-        jButton1.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("No");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
+        cargar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        cargar.setForeground(new java.awt.Color(255, 255, 255));
+        cargar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cargar.setText("CARGAR");
+        cargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cargarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 210, 70));
+
+        tabla_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
+        jPanel1.add(tabla_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
+
+        no.setBackground(new java.awt.Color(0, 102, 51));
+        no.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
+        no.setForeground(new java.awt.Color(255, 255, 255));
+        no.setText("No");
+        jPanel1.add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
         si.setBackground(new java.awt.Color(0, 102, 51));
         si.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
@@ -89,6 +110,12 @@ public class Manual extends javax.swing.JFrame {
 
         Pregunta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Pregunta.setForeground(new java.awt.Color(255, 255, 255));
+        Pregunta.setText("Esperando...");
+        Pregunta.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                PreguntaPropertyChange(evt);
+            }
+        });
         jPanel1.add(Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 310, 40));
 
         regresar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
@@ -132,10 +159,10 @@ public class Manual extends javax.swing.JFrame {
         jLabel2.setText("DE RECORRIDO");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, 40));
 
-        jLabel3.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("VER ARBOL ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, 120));
+        VerArbol.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        VerArbol.setForeground(new java.awt.Color(255, 255, 255));
+        VerArbol.setText("VER ARBOL ");
+        jPanel1.add(VerArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, 120));
 
         jPanel3.setBackground(new java.awt.Color(117, 91, 50));
 
@@ -187,8 +214,16 @@ public class Manual extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarMouseClicked
 
     private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
-        Pregunta.setText("hola");
+        
     }//GEN-LAST:event_siActionPerformed
+
+    private void PreguntaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PreguntaPropertyChange
+        
+    }//GEN-LAST:event_PreguntaPropertyChange
+
+    private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
+        
+    }//GEN-LAST:event_cargarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -227,22 +262,24 @@ public class Manual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Pregunta;
+    public javax.swing.JLabel Pregunta;
+    public javax.swing.JLabel VerArbol;
     private javax.swing.JPanel bg;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel cargar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    public javax.swing.JButton no;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
     private javax.swing.JLabel regresar;
-    private javax.swing.JButton si;
+    public javax.swing.JButton si;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;
     private javax.swing.JLabel tabla_3;
+    private javax.swing.JLabel tabla_4;
     // End of variables declaration//GEN-END:variables
 }

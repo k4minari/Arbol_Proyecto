@@ -9,6 +9,7 @@ import EDDauxiliares.InfoEspecie;
 import EDDauxiliares.Step;
 import EDDauxiliares.StepList;
 import Interfaz.Manual;
+import Interfaz.Pagina1;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
@@ -140,6 +141,7 @@ public class ArbolDicotomico {
 
 
 public void iniciarBusquedaInteractivaConVisual() {
+
     NodoArbol actual = this.getRaiz();
     StepList pasos = new StepList();
 

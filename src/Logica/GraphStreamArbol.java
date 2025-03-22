@@ -5,6 +5,8 @@
 package Logica;
 
 import EDDauxiliares.NodoIdPair;
+import EDDauxiliares.Step;
+import EDDauxiliares.StepList;
 import javax.swing.JOptionPane;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
@@ -263,6 +265,64 @@ public class GraphStreamArbol {
 
         graph.setAttribute("ui.stylesheet", styleSheet);
     }
+    /**
+ * Muestra un nuevo grafo que representa únicamente el recorrido
+ * parcial o completo realizado sobre el árbol, siguiendo los pasos dados.
+ * No modifica el grafo original ni la estructura principal.
+ *
+ * @param raiz      Raíz del árbol original.
+ * @param recorrido Lista parcial de pasos (pregunta + respuesta).
+ */
+    public void mostrarRecorridoDesdeRaiz(NodoArbol raiz, StepList recorrido) {
+    Graph subGraph = new SingleGraph("Recorrido");
+    System.setProperty("org.graphstream.ui", "swing");
+    System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+
+    subGraph.setAttribute("ui.stylesheet", graph.getAttribute("ui.stylesheet"));
+
+    NodoArbol actual = raiz;
+    String nodoIdPadre = Integer.toHexString(System.identityHashCode(actual));
+    subGraph.addNode(nodoIdPadre).setAttribute("ui.label", actual.getPregunta());
+    subGraph.getNode(nodoIdPadre).setAttribute("ui.class", "root");
+    subGraph.getNode(nodoIdPadre).setAttribute("xyz", 0, 0, 0);
+
+    double x = 0, y = 0;
+    double dx = 150;  // separación horizontal reducida
+    double dy = 100;  // separación vertical reducida
+
+    for (int i = 0; i < recorrido.length(); i++) {
+        Step paso = recorrido.get(i);
+        boolean respuesta = paso.isRespuesta();
+
+        NodoArbol siguiente = respuesta ? actual.getRespuestaSi() : actual.getRespuestaNo();
+        if (siguiente == null) break;
+
+        String nodoId = Integer.toHexString(System.identityHashCode(siguiente));
+        Node gNode = subGraph.addNode(nodoId);
+
+        if (siguiente.getEspecie() != null) {
+            gNode.setAttribute("ui.label", siguiente.getEspecie());
+            gNode.setAttribute("ui.class", "leaf");
+        } else {
+            gNode.setAttribute("ui.label", siguiente.getPregunta());
+            gNode.setAttribute("ui.class", "internal");
+        }
+
+        String edgeId = nodoIdPadre + "->" + nodoId;
+        Edge e = subGraph.addEdge(edgeId, nodoIdPadre, nodoId, true);
+        e.setAttribute("ui.label", respuesta ? "SI" : "NO");
+
+        x += respuesta ? -dx : dx;
+        y += dy;
+        gNode.setAttribute("xyz", x, y, 0);
+
+        actual = siguiente;
+        nodoIdPadre = nodoId;
+    }
+
+    org.graphstream.ui.view.Viewer viewer = subGraph.display(false);
+    viewer.setCloseFramePolicy(org.graphstream.ui.view.Viewer.CloseFramePolicy.HIDE_ONLY);
+}
 
     /**
      * Obtiene la raiz del arbol que se esta graficando.

@@ -136,27 +136,65 @@ public class ArbolDicotomico {
      * Realiza una busqueda interactiva del arbol, pidiendo al usuario que conteste (S/N)
      * en la consola hasta llegar a una hoja (especie).
      */
-    public void iniciarBusquedaInteractiva() {
-        NodoArbol actual = raiz;
-        Scanner sc = new Scanner(System.in);
 
-        while (actual != null) {
-            // Si es hoja
-            if (actual.getEspecie() != null) {
-                System.out.println("La especie identificada es: " + actual.getEspecie());
-                return;
-            }
-            // Caso contrario, mostramos la pregunta
-            System.out.println(actual.getPregunta() + " (S/N)");
-            String respuesta = sc.nextLine().trim().toUpperCase();
 
-            if (respuesta.startsWith("S")) {
-                actual = actual.getRespuestaSi();
-            } else {
-                actual = actual.getRespuestaNo();
+
+
+public void iniciarBusquedaInteractivaConVisual() {
+    NodoArbol actual = this.getRaiz();
+    StepList pasos = new StepList();
+
+    while (actual != null) {
+        if (actual.getEspecie() != null) {
+            int opcionFinal = JOptionPane.showOptionDialog(null,
+                    "La especie identificada es: " + actual.getEspecie() + "\n¿Deseas ver el recorrido?",
+                    "Especie encontrada",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    new String[]{"Sí", "No", "Cancelar"},
+                    "Sí");
+
+            if (opcionFinal == 0) {
+                GraphStreamArbol grafoRecorrido = new GraphStreamArbol("Recorrido final");
+                grafoRecorrido.mostrarRecorridoDesdeRaiz(this.getRaiz(), pasos);
             }
+
+            if (opcionFinal == 2) {
+                JOptionPane.showMessageDialog(null, "Búsqueda interrumpida.");
+            }
+
+            return; // terminamos después de encontrar especie
+        }
+
+        String[] opciones = {"Sí", "No", "Mostrar recorrido"};
+        int seleccion = JOptionPane.showOptionDialog(null,
+                actual.getPregunta(),
+                "Pregunta del árbol",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]);
+
+        if (seleccion == 0) {
+            pasos.add(new Step(actual.getPregunta(), true));
+            actual = actual.getRespuestaSi();
+        } else if (seleccion == 1) {
+            pasos.add(new Step(actual.getPregunta(), false));
+            actual = actual.getRespuestaNo();
+        } else if (seleccion == 2) {
+            GraphStreamArbol grafoRecorrido = new GraphStreamArbol("Recorrido actual");
+            grafoRecorrido.mostrarRecorridoDesdeRaiz(this.getRaiz(), pasos);
+        } else {
+            JOptionPane.showMessageDialog(null, "Búsqueda interrumpida.");
+            return;
         }
     }
+}
+
+
+
 
     /**
      * Busca una especie en el arbol realizando un recorrido inorden.

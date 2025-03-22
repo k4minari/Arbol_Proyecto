@@ -80,7 +80,7 @@ public class Arbol_Dicotomico {
         grafoArbol.mostrar();
 
         // Listo: aparece la ventana de GraphStream con los nodos y aristas
-        arbol.iniciarBusquedaInteractiva();
+        arbol.iniciarBusquedaInteractivaConVisual();
     
     }
     

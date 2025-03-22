@@ -4,16 +4,21 @@
  */
 package Interfaz;
 
+import Logica.ArbolDicotomico;
+
 /**
  *
  * @author ile1
  */
 public class Manual extends javax.swing.JFrame {
+    
+    ArbolDicotomico arbol = new ArbolDicotomico();
 
     int mouseX, mouseY;
     
     public Manual() {
         initComponents();
+        arbol.iniciarBusquedaInteractiva();
     }
 
     /**
@@ -28,7 +33,8 @@ public class Manual extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        si = new javax.swing.JButton();
+        Pregunta = new javax.swing.JLabel();
         regresar = new javax.swing.JLabel();
         tabla_3 = new javax.swing.JLabel();
         tabla1 = new javax.swing.JLabel();
@@ -70,11 +76,20 @@ public class Manual extends javax.swing.JFrame {
         jButton1.setText("No");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 102, 51));
-        jButton3.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Si");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        si.setBackground(new java.awt.Color(0, 102, 51));
+        si.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
+        si.setForeground(new java.awt.Color(255, 255, 255));
+        si.setText("Si");
+        si.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siActionPerformed(evt);
+            }
+        });
+        jPanel1.add(si, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        Pregunta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Pregunta.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(Pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 310, 40));
 
         regresar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
         regresar.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,6 +186,10 @@ public class Manual extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_regresarMouseClicked
 
+    private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
+        Pregunta.setText("hola");
+    }//GEN-LAST:event_siActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -208,9 +227,9 @@ public class Manual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Pregunta;
     private javax.swing.JPanel bg;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -221,6 +240,7 @@ public class Manual extends javax.swing.JFrame {
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
     private javax.swing.JLabel regresar;
+    private javax.swing.JButton si;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;
     private javax.swing.JLabel tabla_3;

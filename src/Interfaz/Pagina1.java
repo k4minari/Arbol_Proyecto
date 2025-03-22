@@ -4,14 +4,29 @@
  */
 package Interfaz;
 
+import EDDauxiliares.InfoEspecie;
+import EDDauxiliares.Step;
+import EDDauxiliares.StepList;
+import Interfaz.Manual;
+import Logica.ArbolDicotomico;
+import Logica.CalculoTiempos;
+import Logica.GraphStreamArbol;
+import Logica.NodoArbol;
+import Logica.TablaHash;
+import java.io.File;
+import javax.swing.JFileChooser;
+import java.util.Scanner;
 /**
  *
  * @author ile1
  */
 public class Pagina1 extends javax.swing.JFrame {
+    
+    ArbolDicotomico arbol = new ArbolDicotomico();
 
     int mouseX, mouseY;
     
+    private NodoArbol raiz;
     public Pagina1() {
         initComponents();
     }
@@ -41,7 +56,7 @@ public class Pagina1 extends javax.swing.JFrame {
         tabla1 = new javax.swing.JLabel();
         tabla = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
-        arbol = new javax.swing.JLabel();
+        Arbol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -161,8 +176,8 @@ public class Pagina1 extends javax.swing.JFrame {
         tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 200));
 
-        arbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
-        jPanel1.add(arbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+        Arbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
+        jPanel1.add(Arbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 460));
 
@@ -203,9 +218,12 @@ public class Pagina1 extends javax.swing.JFrame {
     }//GEN-LAST:event_si1MouseClicked
 
     private void manual1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual1MouseClicked
+
+        arbol.seleccionarYcargarArchivo();
         Manual manual = new Manual();
         manual.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_manual1MouseClicked
 
     private void siMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siMouseClicked
@@ -219,7 +237,8 @@ public class Pagina1 extends javax.swing.JFrame {
     }//GEN-LAST:event_DirectaMouseClicked
 
     private void CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarMouseClicked
-        // TODO add your handling code here:
+        ArbolDicotomico arbol = new ArbolDicotomico();
+        arbol.seleccionarYcargarArchivo();
     }//GEN-LAST:event_CargarMouseClicked
 
     /**
@@ -259,9 +278,9 @@ public class Pagina1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Arbol;
     private javax.swing.JLabel Cargar;
     private javax.swing.JLabel Directa;
-    private javax.swing.JLabel arbol;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel manual1;

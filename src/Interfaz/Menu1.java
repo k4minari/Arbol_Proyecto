@@ -12,6 +12,7 @@ import Logica.CalculoTiempos;
 import Logica.GraphStreamArbol;
 import Logica.NodoArbol;
 import Logica.TablaHash;
+
 /**
  *
  * @author ile1
@@ -99,8 +100,8 @@ public class Menu1 extends javax.swing.JFrame {
 
         cargar.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
         cargar.setForeground(new java.awt.Color(255, 255, 255));
-        cargar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cargar.setText("CARGAR");
+        cargar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cargar.setText("INICIAR");
         cargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,8 +176,7 @@ public class Menu1 extends javax.swing.JFrame {
     }//GEN-LAST:event_XMouseClicked
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
-        // >>>>>>>> CARGAR
-        
+
         Pagina1 pagina = new Pagina1();
         pagina.setVisible(true);
         this.setVisible(false);

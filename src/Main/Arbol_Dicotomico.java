@@ -26,16 +26,17 @@ public class Arbol_Dicotomico {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         ArbolDicotomico arbol = new ArbolDicotomico();
+        
+        Menu1 menu = new Menu1(); // deberia ejecutarse primero
+        menu.setVisible(true);
+        
+        /*ArbolDicotomico arbol = new ArbolDicotomico();
 
       
         arbol.seleccionarYcargarArchivo();
 
         
         arbol.imprimirArbol();
-        
-         Menu1 menu = new Menu1(); // deberia ejecutarse primero
-         menu.setVisible(true);
 
        // 2. Crear la tabla hash
         TablaHash tabla = new TablaHash(50); // capacidad arbitraria
@@ -81,10 +82,10 @@ public class Arbol_Dicotomico {
         grafoArbol.construir(arbol);
 
         // 4. Mostrarlo
-        grafoArbol.mostrar();
+        grafoArbol.mostrar();*/
 
         // Listo: aparece la ventana de GraphStream con los nodos y aristas
-        arbol.iniciarBusquedaInteractiva();
+        // >>arbol.iniciarBusquedaInteractiva();
     
     }
     

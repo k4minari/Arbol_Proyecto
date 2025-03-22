@@ -8,6 +8,7 @@ package Logica;
 import EDDauxiliares.InfoEspecie;
 import EDDauxiliares.Step;
 import EDDauxiliares.StepList;
+import Interfaz.Manual;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
@@ -139,6 +140,7 @@ public class ArbolDicotomico {
     public void iniciarBusquedaInteractiva() {
         NodoArbol actual = raiz;
         Scanner sc = new Scanner(System.in);
+        
 
         while (actual != null) {
             // Si es hoja

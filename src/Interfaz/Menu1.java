@@ -154,21 +154,52 @@ public class Menu1 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Captura las coordenadas del cursor del ratón cuando se presiona el botón sobre el fondo.
+    *
+    * @param evt El evento del ratón que contiene la información del clic.
+    */
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         mouseX = evt.getX();
         mouseY = evt.getY();
     }//GEN-LAST:event_bgMousePressed
 
+    /**
+    * Maneja el evento de arrastre del ratón sobre el fondo de la ventana.
+    * Permite mover la ventana arrastrando el fondo con el ratón.
+    *
+    * @param evt El evento de arrastre del ratón que contiene la información del evento.
+    */
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_bgMouseDragged
 
+    /**
+    * Maneja el evento de clic del ratón en el componente 'X'.
+    * Cierra la aplicación cuando se hace clic.
+    *
+    * @param evt El evento de clic del ratón que activó este método.
+    */
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         System.exit(0);
     }//GEN-LAST:event_XMouseClicked
 
+    /**
+     * Maneja el evento de clic del ratón en el componente INICIAR.
+     *
+     * Este método realiza las siguientes acciones:
+     * 1. Crea una instancia de la clase ArbolDicotomico.
+     * 2. Llama al método seleccionarYcargarArchivo() del objeto ArbolDicotomico.
+     * 3. Si el método seleccionarYcargarArchivo() devuelve verdadero 
+     * (lo que indica que el archivo se seleccionó y cargó correctamente):
+     * a. Crea una instancia de la clase Pagina1, pasando el objeto ArbolDicotomico como argumento.
+     * b. Hace visible la ventana Pagina1.
+     * c. Oculta la ventana actual.
+     *
+     * @param evt El evento de clic del ratón que desencadenó la llamada a este método.
+     */
     private void INICIARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INICIARMouseClicked
         ArbolDicotomico arbol = new ArbolDicotomico();
         if(arbol.seleccionarYcargarArchivo()){

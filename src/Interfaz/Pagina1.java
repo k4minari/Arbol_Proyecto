@@ -198,17 +198,37 @@ public class Pagina1 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Captura las coordenadas del cursor del ratón cuando se presiona el botón sobre el fondo.
+    *
+    * @param evt El evento del ratón que contiene la información del clic.
+    */
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         mouseX = evt.getX();
         mouseY = evt.getY();
     }//GEN-LAST:event_bgMousePressed
 
+    /**
+    * Maneja el evento de arrastre del ratón sobre el fondo de la ventana.
+    * Permite mover la ventana arrastrando el fondo con el ratón.
+    *
+    * @param evt El evento de arrastre del ratón que contiene la información del evento.
+    */
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_bgMouseDragged
 
+    /**
+    * Maneja el evento de clic del ratón en el botón "regresar".
+    * <p>
+    * Este método crea una nueva instancia de la clase {@code Menu1},
+    * la hace visible y oculta la ventana actual.
+    * </p>
+    *
+    * @param evt El evento de clic del ratón que desencadenó la acción.
+    */
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         Menu1 menu = new Menu1();
         menu.setVisible(true);
@@ -219,19 +239,31 @@ public class Pagina1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_si1MouseClicked
 
+    /**
+    * Maneja el evento de clic del ratón en el componente 'manual1'.
+    * <p>
+    * Este método crea una nueva instancia de la clase {@code Manual}, le pasa el árbol cargado actual,
+    * la hace visible y oculta la ventana actual.
+    * </p>
+    *
+    * @param evt El evento de clic del ratón que desencadenó la ejecución de este método.
+    */
     private void manual1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual1MouseClicked
 
         Manual manual = new Manual(this.arbolcargado);
         manual.setVisible(true);
         this.setVisible(false);
-        //arbol.iniciarBusquedaInteractivaConVisual();
-        
     }//GEN-LAST:event_manual1MouseClicked
 
     private void siMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_siMouseClicked
 
+    /**
+     * Maneja el evento de clic del ratón en el componente "Directa".
+     * Crea una nueva instancia de la clase "Directa", la hace visible y oculta la ventana actual.
+     * * @param evt El evento de clic del ratón que desencadena este método.
+     */
     private void DirectaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DirectaMouseClicked
         Directa directa = new Directa(this.arbolcargado);
         directa.setVisible(true);
@@ -243,6 +275,20 @@ public class Pagina1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_regresar1MouseClicked
 
+    /**
+    * Genera y muestra una representación gráfica completa del árbol cargado.
+    *
+    * Este método se activa cuando el usuario realiza una acción sobre el componente
+    * `MostrarArbolCompleto`. Crea una instancia de `GraphStreamArbol` con el nombre "ARBOL",
+    * construye la representación gráfica del árbol almacenado en `this.arbolcargado` y,
+    * finalmente, muestra la representación gráfica en una ventana separada.
+    *
+    * @param evt El evento de acción que desencadenó la llamada a este método.
+    * Contiene información sobre la acción que se realizó.
+    *
+    * @see GraphStreamArbol
+    * @see java.awt.event.ActionEvent
+    */
     private void MostrarArbolCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArbolCompletoActionPerformed
         GraphStreamArbol graph= new GraphStreamArbol("ARBOL");// TODO add your handling code here:
         graph.construir(this.arbolcargado);

@@ -155,22 +155,52 @@ public class Especie_manual extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Captura las coordenadas del cursor del ratón cuando se presiona el botón sobre el fondo.
+    *
+    * @param evt El evento del ratón que contiene la información del clic.
+    */
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         mouseX = evt.getX();
         mouseY = evt.getY();
     }//GEN-LAST:event_bgMousePressed
 
+    /**
+    * Maneja el evento de arrastre del ratón sobre el fondo de la ventana.
+    * Permite mover la ventana arrastrando el fondo con el ratón.
+    *
+    * @param evt El evento de arrastre del ratón que contiene la información del evento.
+    */
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_bgMouseDragged
 
+    /**
+    * Maneja el evento de clic del ratón en el árbol.
+    *
+    * Este método se invoca cuando el usuario hace clic en un nodo del árbol.
+    * Crea una nueva instancia de `GraphStreamArbol` para visualizar el recorrido actual del árbol.
+    * Luego, utiliza el método `mostrarRecorridoDesdeRaiz` para mostrar gráficamente el recorrido del árbol
+    * desde su raíz, utilizando los pasos cargados previamente.
+    *
+    * @param evt El evento de clic del ratón que desencadenó esta acción.
+    */
     private void arbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arbolMouseClicked
     GraphStreamArbol grafoRecorrido = new GraphStreamArbol("Recorrido actual");
      grafoRecorrido.mostrarRecorridoDesdeRaiz(this.arbolcargado.getRaiz(), this.pasoscargados);
     }//GEN-LAST:event_arbolMouseClicked
 
+    /**
+    * Maneja el evento de clic del ratón en el botón "Regresar".
+    * <p>
+    * Este método crea una instancia de la clase {@code Pagina1}, pasando el árbol cargado actual como argumento.
+    * Luego, hace visible la nueva página y oculta la página actual.
+    * </p>
+    *
+    * @param evt El evento de clic del ratón que desencadenó la acción.
+    */
     private void RegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMouseClicked
         Pagina1 pagina = new Pagina1(this.arbolcargado);
         pagina.setVisible(true);

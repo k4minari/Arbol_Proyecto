@@ -209,34 +209,86 @@ public class Directa extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+    * Captura las coordenadas del cursor del ratón cuando se presiona el botón sobre el fondo.
+    *
+    * @param evt El evento del ratón que contiene la información del clic.
+    */
+    
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         mouseX = evt.getX();
         mouseY = evt.getY();
     }//GEN-LAST:event_bgMousePressed
-
+    
+    /**
+    * Maneja el evento de arrastre del ratón sobre el fondo de la ventana.
+    * Permite mover la ventana arrastrando el fondo con el ratón.
+    *
+    * @param evt El evento de arrastre del ratón que contiene la información del evento.
+    */
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_bgMouseDragged
 
+    /**
+    * Maneja el evento de clic del ratón en el componente HASH.
+    *
+    * Este método se invoca cuando el usuario hace clic en el componente HASH.
+    * Establece la variable 'buscarPorHash' a 'true' para indicar que la búsqueda
+    * se realizará utilizando una tabla hash. También actualiza el texto del
+    * componente OUTPUT para informar al usuario que el modo de búsqueda ha
+    * cambiado a "Hash Table".
+    *
+    * @param evt El evento de clic del ratón que disparó este método.
+    */
     private void HASHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HASHMouseClicked
         buscarPorHash = true;
         OUTPUT.setText("Modo de búsqueda: Hash Table");
     }//GEN-LAST:event_HASHMouseClicked
 
+    /**
+    * Maneja el evento de clic del ratón en el componente 'regresar1'.
+    *
+    * Este método realiza las siguientes acciones:
+    * 1.  Crea una nueva instancia de la clase 'Pagina1', pasando el árbol cargado actual como argumento.
+    * 2.  Hace visible la nueva instancia de 'Pagina1'.
+    * 3.  Oculta la ventana actual.
+    *
+    * @param evt El evento de clic del ratón que desencadenó esta acción.
+    */
     private void regresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar1MouseClicked
         Pagina1 pagina = new Pagina1(this.arbolcargado);
         pagina.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresar1MouseClicked
 
+    /**
+     * Maneja el evento de clic del ratón en el componente 'ARBOL'.
+     * * Este método se ejecuta cuando el usuario hace clic en el componente 'ARBOL'.
+     * Realiza las siguientes acciones:
+     * * 1.  Establece la variable 'buscarPorHash' a 'false', indicando que la búsqueda
+     * ya no se realizará utilizando un hash.
+     * 2.  Actualiza el texto del componente 'OUTPUT' para mostrar el mensaje
+     * "Modo de búsqueda: Arbol", informando al usuario que la búsqueda se realizará
+     * utilizando un árbol.
+     *
+     * @param evt El objeto MouseEvent que contiene información sobre el evento del ratón.
+     */
     private void ARBOLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARBOLMouseClicked
         buscarPorHash = false;
         OUTPUT.setText("Modo de búsqueda: Arbol");
     }//GEN-LAST:event_ARBOLMouseClicked
 
+    /**
+     * Maneja el evento de acción cuando se selecciona un elemento del menú desplegable MenuOpcion.
+     *
+     * @param evt El evento de acción que desencadenó esta función. Contiene información sobre la acción realizada,
+     * como el objeto fuente del evento y cualquier modificador de teclado o mouse que se haya presionado.
+     * En este caso, se utiliza para obtener el elemento seleccionado del menú desplegable.
+     */
     private void MenuOpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuOpcionActionPerformed
     String seleccion = (String) MenuOpcion.getSelectedItem();  
     if (seleccion != null) {
@@ -245,11 +297,31 @@ public class Directa extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MenuOpcionActionPerformed
 
+    /**
+     * Maneja el evento de clic del ratón en el componente 'TIEMPOS'.
+     * <p>
+     * Al hacer clic, se crea una instancia de la clase 'CalculoTiempos', que se encarga de comparar los tiempos de ejecución
+     * de un árbol cargado con una clave seleccionada. El resultado de la comparación se muestra en el componente 'OUTPUT'.
+     * </p>
+     *
+     * @param evt El evento de clic del ratón que desencadenó esta acción.
+     * @see CalculoTiempos
+     * @see #arbolcargado
+     * @see #tabla
+     * @see #claveSeleccionada
+     * @see #OUTPUT
+     */
     private void TIEMPOSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TIEMPOSMouseClicked
         CalculoTiempos tiempo = new CalculoTiempos(this.arbolcargado,this.tabla);
         OUTPUT.setText(tiempo.compararTiempos(claveSeleccionada));
     }//GEN-LAST:event_TIEMPOSMouseClicked
 
+    /**
+    * Realiza una búsqueda de información de una especie basada en la clave seleccionada.
+    * La búsqueda se realiza utilizando un hash o un árbol de búsqueda, dependiendo del valor de la variable 'buscarPorHash'.
+    *
+    * @param evt El evento de acción que desencadenó la llamada a este método.
+    */
     private void BUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUSCARActionPerformed
 if (buscarPorHash) {
         InfoEspecie info = tabla.buscar(this.claveSeleccionada);

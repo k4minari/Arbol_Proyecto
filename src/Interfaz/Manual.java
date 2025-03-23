@@ -16,13 +16,17 @@ import javax.swing.JOptionPane;
  */
 public class Manual extends javax.swing.JFrame {
     
-
-
+    private NodoArbol actual;  
+    private StepList pasos;
+    private ArbolDicotomico arbolcargado;
     int mouseX, mouseY;
     
-    public Manual() {
-        
+    public Manual(ArbolDicotomico arbol) {
         initComponents();
+        this.arbolcargado = arbol;
+        this.actual= arbol.getRaiz();
+        this.pasos= new StepList();
+        Pregunta.setText(actual.getPregunta());
     }
 
     /**
@@ -34,11 +38,10 @@ public class Manual extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tabla_4 = new javax.swing.JLabel();
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        cargar = new javax.swing.JLabel();
-        tabla_4 = new javax.swing.JLabel();
-        no = new javax.swing.JButton();
+        NO = new javax.swing.JButton();
         si = new javax.swing.JButton();
         Pregunta = new javax.swing.JLabel();
         regresar = new javax.swing.JLabel();
@@ -50,9 +53,13 @@ public class Manual extends javax.swing.JFrame {
         plantas4 = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        VerArbol = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        regresar1 = new javax.swing.JLabel();
+        regresar2 = new javax.swing.JLabel();
+        tabla_5 = new javax.swing.JLabel();
+        MostrarArbol = new javax.swing.JButton();
+        tabla_6 = new javax.swing.JLabel();
+
+        tabla_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -76,26 +83,16 @@ public class Manual extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cargar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        cargar.setForeground(new java.awt.Color(255, 255, 255));
-        cargar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cargar.setText("CARGAR");
-        cargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cargarMouseClicked(evt);
+        NO.setBackground(new java.awt.Color(0, 102, 51));
+        NO.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
+        NO.setForeground(new java.awt.Color(255, 255, 255));
+        NO.setText("No");
+        NO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NOActionPerformed(evt);
             }
         });
-        jPanel1.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 210, 70));
-
-        tabla_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
-        jPanel1.add(tabla_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
-
-        no.setBackground(new java.awt.Color(0, 102, 51));
-        no.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        no.setForeground(new java.awt.Color(255, 255, 255));
-        no.setText("No");
-        jPanel1.add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
+        jPanel1.add(NO, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
         si.setBackground(new java.awt.Color(0, 102, 51));
         si.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
@@ -128,10 +125,10 @@ public class Manual extends javax.swing.JFrame {
                 regresarMouseClicked(evt);
             }
         });
-        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 60));
+        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 200, 60));
 
         tabla_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
-        jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 90, 300, 200));
@@ -154,30 +151,46 @@ public class Manual extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 190));
 
-        jLabel2.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("DE RECORRIDO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, 40));
+        regresar1.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        regresar1.setForeground(new java.awt.Color(255, 255, 255));
+        regresar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar1.setText("<<REGRESAR");
+        regresar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(regresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 60));
 
-        VerArbol.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        VerArbol.setForeground(new java.awt.Color(255, 255, 255));
-        VerArbol.setText("VER ARBOL ");
-        jPanel1.add(VerArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, 120));
+        regresar2.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        regresar2.setForeground(new java.awt.Color(255, 255, 255));
+        regresar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar2.setText("<<REGRESAR");
+        regresar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(regresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 60));
 
-        jPanel3.setBackground(new java.awt.Color(117, 91, 50));
+        tabla_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
+        jPanel1.add(tabla_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        MostrarArbol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        MostrarArbol.setForeground(new java.awt.Color(255, 255, 255));
+        MostrarArbol.setText("Mostrar Recorrido");
+        MostrarArbol.setContentAreaFilled(false);
+        MostrarArbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarArbolActionPerformed(evt);
+            }
+        });
+        jPanel1.add(MostrarArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 233, 230, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 230, -1));
+        tabla_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
+        jPanel1.add(tabla_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 460));
 
@@ -208,22 +221,73 @@ public class Manual extends javax.swing.JFrame {
     }//GEN-LAST:event_bgMouseDragged
 
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
-        Pagina1 pagina = new Pagina1();
+        Pagina1 pagina = new Pagina1(this.arbolcargado);
         pagina.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresarMouseClicked
 
     private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
-        
+      if (actual != null) {
+        if (actual.getEspecie() == null) {
+            pasos.add(new Step(actual.getPregunta(), true));
+            actual = actual.getRespuestaSi();
+
+            if (actual.getEspecie() == null) {
+                Pregunta.setText(actual.getPregunta());
+            } else {
+                // Ya llegaste a una hoja → ir a siguiente interfaz
+                Especie_manual especie = new Especie_manual(this.arbolcargado,this.pasos, this.actual);
+                this.setVisible(false);
+                especie.setVisible(true);
+            }
+        } else {
+            // Ya era hoja desde el principio (caso raro pero lo manejamos igual)
+            Especie_manual especie = new Especie_manual(this.arbolcargado,this.pasos, this.actual);
+            this.setVisible(false);
+            especie.setVisible(true);
+        }
+    }
     }//GEN-LAST:event_siActionPerformed
 
     private void PreguntaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PreguntaPropertyChange
         
     }//GEN-LAST:event_PreguntaPropertyChange
 
-    private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
-        
-    }//GEN-LAST:event_cargarMouseClicked
+    private void NOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOActionPerformed
+       if (actual != null) {
+        if (actual.getEspecie() == null) {
+            pasos.add(new Step(actual.getPregunta(), false));
+            actual = actual.getRespuestaNo();
+
+            if (actual.getEspecie() == null) {
+                Pregunta.setText(actual.getPregunta());
+            } else {
+                // Ya llegaste a una hoja → ir a siguiente interfaz
+                Especie_manual especie = new Especie_manual(this.arbolcargado,this.pasos, this.actual);
+                this.setVisible(false);
+                especie.setVisible(true);
+            }
+        } else {
+            // Ya era hoja desde el principio (caso raro pero lo manejamos igual)
+            Especie_manual especie = new Especie_manual(this.arbolcargado,this.pasos, this.actual);
+            this.setVisible(false);
+            especie.setVisible(true);
+        }
+    }
+    }//GEN-LAST:event_NOActionPerformed
+
+    private void regresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regresar1MouseClicked
+
+    private void regresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regresar2MouseClicked
+
+    private void MostrarArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArbolActionPerformed
+     GraphStreamArbol grafoRecorrido = new GraphStreamArbol("Recorrido actual");
+     grafoRecorrido.mostrarRecorridoDesdeRaiz(this.arbolcargado.getRaiz(), this.pasos);
+    }//GEN-LAST:event_MostrarArbolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,24 +326,25 @@ public class Manual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MostrarArbol;
+    public javax.swing.JButton NO;
     public javax.swing.JLabel Pregunta;
-    public javax.swing.JLabel VerArbol;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel cargar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    public javax.swing.JButton no;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
     private javax.swing.JLabel regresar;
+    private javax.swing.JLabel regresar1;
+    private javax.swing.JLabel regresar2;
     public javax.swing.JButton si;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;
     private javax.swing.JLabel tabla_3;
     private javax.swing.JLabel tabla_4;
+    private javax.swing.JLabel tabla_5;
+    private javax.swing.JLabel tabla_6;
     // End of variables declaration//GEN-END:variables
 }

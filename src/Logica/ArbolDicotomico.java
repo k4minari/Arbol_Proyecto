@@ -198,33 +198,40 @@ public void iniciarBusquedaInteractivaConVisual() {
 
 
 
-    /**
-     * Busca una especie en el arbol realizando un recorrido inorden.
-     * @param nodo  NodoArbol actual (o subraiz).
-     * @param clave Nombre de la especie a buscar.
-     * @return true si se encuentra la especie, false en caso contrario.
-     */
-    public boolean buscarInOrden(NodoArbol nodo, String clave) {
-        if (nodo == null) return false;
+    public InfoEspecie buscarInOrdenConRuta(String clave) {
+    StepList ruta = new StepList();
+    return buscarInOrdenRec(raiz, clave, ruta);
+}
 
-        // 1) Inorden de la rama "izquierda" (respuestaSi)
-        if (buscarInOrden(nodo.getRespuestaSi(), clave)) {
-            return true;
-        }
+public InfoEspecie buscarInOrdenRec(NodoArbol nodo, String clave, StepList path) {
+    if (nodo == null) return null;
 
-        // 2) Visitar el "nodo"
-        if (nodo.getEspecie() != null && nodo.getEspecie().equals(clave)) {
-            return true;
-        }
-
-        // 3) Inorden de la rama "derecha" (respuestaNo)
-        return buscarInOrden(nodo.getRespuestaNo(), clave);
+    // Rama izquierda (respuesta SI)
+    if (nodo.getRespuestaSi() != null) {
+        path.add(new Step(nodo.getPregunta(), true));
+        InfoEspecie resultadoIzq = buscarInOrdenRec(nodo.getRespuestaSi(), clave, path);
+        if (resultadoIzq != null) return resultadoIzq;
+        path.removeLast();  // backtrack
     }
 
-    // -------------------------------------------------
-    // Metodos privados de soporte
-    // -------------------------------------------------
+    // Nodo actual
+    if (nodo.getEspecie() != null && nodo.getEspecie().equals(clave)) {
+        return new InfoEspecie(nodo, path.copy());
+    }
 
+    // Rama derecha (respuesta NO)
+    if (nodo.getRespuestaNo() != null) {
+        path.add(new Step(nodo.getPregunta(), false));
+        InfoEspecie resultadoDer = buscarInOrdenRec(nodo.getRespuestaNo(), clave, path);
+        if (resultadoDer != null) return resultadoDer;
+        path.removeLast();  // backtrack
+    }
+
+    return null;
+}
+
+
+   
     /**
      * Inserta recursivamente una especie en el arbol, siguiendo el camino de preguntas.
      * @param nodo     Nodo actual en el que estamos.

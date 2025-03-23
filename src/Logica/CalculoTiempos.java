@@ -42,7 +42,7 @@ public class CalculoTiempos {
      */
     public double tiempoBusquedaEnArbolInOrden(String clave) {
         long inicio = System.nanoTime();
-        boolean encontrada = arbol.buscarInOrden(arbol.getRaiz(), clave);
+        InfoEspecie encontrada = arbol.buscarInOrdenConRuta(clave);
         long fin = System.nanoTime();
         double duracionMs = (fin - inicio) / 1_000_000.0;
         return duracionMs;
@@ -103,7 +103,7 @@ public class CalculoTiempos {
         // Construccion del mensaje final
         String resultado = String.format(
             "El metodo mas rapido fue: %s %.5f ms\n"
-          + "Supero a %s %.5f ms por %.5f ms, lo cual representa %.2f%% de diferencia.",
+          + "Supero a %s %.5f ms por %.5f ms,\n lo cual representa %.2f%% de diferencia.",
             metodoMasRapido, tiempoMasRapido,
             metodoMasLento, tiempoMasLento,
             diferencia, porcentaje

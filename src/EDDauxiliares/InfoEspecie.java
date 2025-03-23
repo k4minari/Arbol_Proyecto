@@ -33,7 +33,20 @@ public class InfoEspecie {
         this.leaf = leaf;
         this.path = path;
     }
+   
+    public String toString() {
+    StringBuilder sb = new StringBuilder();
 
+    sb.append("Especie Identificada: ").append(leaf.getEspecie()).append("\n");
+    sb.append("Ruta de identificación:\n");
+
+    for (int i = 0; i < path.length(); i++) {
+        Step paso = path.get(i);
+        sb.append("  - ").append(paso.toString()).append("\n");
+    }
+
+    return sb.toString();
+}
     /**
      * Retorna el nodo hoja del arbol.
      * @return El nodo (NodoArbol) que representa la especie.

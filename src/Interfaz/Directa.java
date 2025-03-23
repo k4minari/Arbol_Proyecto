@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaz;
+import EDDauxiliares.InfoEspecie;
 import Logica.ArbolDicotomico;
 import Logica.TablaHash;
 import Logica.CalculoTiempos;
@@ -13,20 +14,20 @@ import Logica.GraphStreamArbol;
  * @author ile1
  */
 public class Directa extends javax.swing.JFrame {
-
+    private ArbolDicotomico arbolcargado;
+    private String claveSeleccionada;
+    private boolean buscarPorHash;  // true = hash, false = árbol
     int mouseX, mouseY;
-    TablaHash tabla = new TablaHash(50);  // PROBANDO (lo puedes borrar si lo necesitas)
-    public Directa() {
+    private TablaHash tabla;  // PROBANDO (lo puedes borrar si lo necesitas)
+    public Directa(ArbolDicotomico arbol) {
         initComponents();
-        ArbolDicotomico arbol = new ArbolDicotomico(); // PROBANDO (lo puedes borrar si lo necesitas)
-
-      
-        arbol.seleccionarYcargarArchivo(); // PROBANDO (lo puedes borrar si lo necesitas)
-
-        
-        arbol.imprimirArbol(); // PROBANDO (lo puedes borrar si lo necesitas)
- 
-        arbol.construirIndice(tabla); // PROBANDO (lo puedes borrar si lo necesitas)
+        this.arbolcargado= arbol;
+        this.tabla = new TablaHash(50);
+        this.buscarPorHash=true;
+        arbol.construirIndice(tabla);
+        String[] claves = this.tabla.getAllKeys();
+    for (String clave : claves) {
+        MenuOpcion.addItem(clave);}// PROBANDO (lo puedes borrar si lo necesitas)
     }
 
     /**
@@ -40,22 +41,22 @@ public class Directa extends javax.swing.JFrame {
 
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        regresar = new javax.swing.JLabel();
-        regresar3 = new javax.swing.JLabel();
-        regresar2 = new javax.swing.JLabel();
+        HASH = new javax.swing.JLabel();
+        TIEMPOS = new javax.swing.JLabel();
+        ARBOL = new javax.swing.JLabel();
         regresar1 = new javax.swing.JLabel();
         tabla_3 = new javax.swing.JLabel();
         tabla1 = new javax.swing.JLabel();
         plantas1 = new javax.swing.JLabel();
         plantas2 = new javax.swing.JLabel();
         plantas3 = new javax.swing.JLabel();
-        selec = new javax.swing.JComboBox<>();
+        MenuOpcion = new javax.swing.JComboBox<>();
         plantas4 = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
         buscar = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BUSCAR = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        OUTPUT = new javax.swing.JTextArea();
         tabla3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,41 +81,41 @@ public class Directa extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        regresar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        regresar.setForeground(new java.awt.Color(255, 255, 255));
-        regresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regresar.setText("HASHTABLE");
-        regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        HASH.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        HASH.setForeground(new java.awt.Color(255, 255, 255));
+        HASH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HASH.setText("HASHTABLE");
+        HASH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        HASH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarMouseClicked(evt);
+                HASHMouseClicked(evt);
             }
         });
-        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 190, 60));
+        jPanel1.add(HASH, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 190, 60));
 
-        regresar3.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        regresar3.setForeground(new java.awt.Color(255, 255, 255));
-        regresar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regresar3.setText("Ver tiempo");
-        regresar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar3.addMouseListener(new java.awt.event.MouseAdapter() {
+        TIEMPOS.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        TIEMPOS.setForeground(new java.awt.Color(255, 255, 255));
+        TIEMPOS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TIEMPOS.setText("Ver tiempo");
+        TIEMPOS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TIEMPOS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresar3MouseClicked(evt);
+                TIEMPOSMouseClicked(evt);
             }
         });
-        jPanel1.add(regresar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 190, 60));
+        jPanel1.add(TIEMPOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 190, 60));
 
-        regresar2.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        regresar2.setForeground(new java.awt.Color(255, 255, 255));
-        regresar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regresar2.setText("ARBOL");
-        regresar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar2.addMouseListener(new java.awt.event.MouseAdapter() {
+        ARBOL.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        ARBOL.setForeground(new java.awt.Color(255, 255, 255));
+        ARBOL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ARBOL.setText("ARBOL");
+        ARBOL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ARBOL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresar2MouseClicked(evt);
+                ARBOLMouseClicked(evt);
             }
         });
-        jPanel1.add(regresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 190, 60));
+        jPanel1.add(ARBOL, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 190, 60));
 
         regresar1.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
         regresar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,12 +144,12 @@ public class Directa extends javax.swing.JFrame {
         plantas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_2.png"))); // NOI18N
         jPanel1.add(plantas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
 
-        selec.addActionListener(new java.awt.event.ActionListener() {
+        MenuOpcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selecActionPerformed(evt);
+                MenuOpcionActionPerformed(evt);
             }
         });
-        jPanel1.add(selec, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 110, 30));
+        jPanel1.add(MenuOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 110, 30));
 
         plantas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_3.png"))); // NOI18N
         jPanel1.add(plantas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -158,11 +159,11 @@ public class Directa extends javax.swing.JFrame {
 
         buscar.setBackground(new java.awt.Color(0, 51, 0));
 
-        jButton1.setText("Buscar");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BUSCAR.setText("Buscar");
+        BUSCAR.setToolTipText("");
+        BUSCAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BUSCARActionPerformed(evt);
             }
         });
 
@@ -172,22 +173,22 @@ public class Directa extends javax.swing.JFrame {
             buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buscarLayout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         buscarLayout.setVerticalGroup(
             buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarLayout.createSequentialGroup()
                 .addContainerGap(304, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BUSCAR)
                 .addGap(130, 130, 130))
         );
 
         jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 460));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        OUTPUT.setColumns(20);
+        OUTPUT.setRows(5);
+        jScrollPane1.setViewportView(OUTPUT);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 420, 170));
 
@@ -218,7 +219,7 @@ public class Directa extends javax.swing.JFrame {
     
     public void guardarItem(){ // PROBANDO (lo puedes borrar si lo necesitas)
         String[] especies = tabla.getAllKeys();
-        selec.addItem(especies);
+        //selec.addItem(especies);
     
     }
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
@@ -227,36 +228,44 @@ public class Directa extends javax.swing.JFrame {
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_bgMouseDragged
 
-    private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
-
-    }//GEN-LAST:event_regresarMouseClicked
+    private void HASHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HASHMouseClicked
+        buscarPorHash = true;
+        OUTPUT.setText("Modo de búsqueda: Hash Table");
+    }//GEN-LAST:event_HASHMouseClicked
 
     private void regresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar1MouseClicked
-        Pagina1 pagina = new Pagina1();
+        Pagina1 pagina = new Pagina1(this.arbolcargado);
         pagina.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresar1MouseClicked
 
-    private void regresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regresar2MouseClicked
+    private void ARBOLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARBOLMouseClicked
+        buscarPorHash = false;
+        OUTPUT.setText("Modo de búsqueda: Arbol");
+    }//GEN-LAST:event_ARBOLMouseClicked
 
-    private void selecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecActionPerformed
-        TablaHash tabla = new TablaHash(50);
-        tabla.getAllKeys();
+    private void MenuOpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuOpcionActionPerformed
+    String seleccion = (String) MenuOpcion.getSelectedItem();  
+    if (seleccion != null) {
+        claveSeleccionada = seleccion;
+        OUTPUT.setText("Seleccion: "+ seleccion);}
         
-    }//GEN-LAST:event_selecActionPerformed
+    }//GEN-LAST:event_MenuOpcionActionPerformed
 
-    private void regresar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regresar3MouseClicked
+    private void TIEMPOSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TIEMPOSMouseClicked
+        CalculoTiempos tiempo = new CalculoTiempos(this.arbolcargado,this.tabla);
+        OUTPUT.setText(tiempo.compararTiempos(claveSeleccionada));
+    }//GEN-LAST:event_TIEMPOSMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        String especie = "";
+    private void BUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUSCARActionPerformed
+if (buscarPorHash) {
+        InfoEspecie info = tabla.buscar(this.claveSeleccionada);
+        OUTPUT.setText("Hash:"+ "\n"+info.toString());
         
- 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    } else {
+        InfoEspecie info =  arbolcargado.buscarInOrdenConRuta(this.claveSeleccionada);
+        OUTPUT.setText("Arbol:"+ "\n"+ info.toString());}
+    }//GEN-LAST:event_BUSCARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,21 +304,21 @@ public class Directa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ARBOL;
+    private javax.swing.JButton BUSCAR;
+    private javax.swing.JLabel HASH;
+    private javax.swing.JComboBox<String> MenuOpcion;
+    private javax.swing.JTextArea OUTPUT;
+    private javax.swing.JLabel TIEMPOS;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel buscar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
-    private javax.swing.JLabel regresar;
     private javax.swing.JLabel regresar1;
-    private javax.swing.JLabel regresar2;
-    private javax.swing.JLabel regresar3;
-    private javax.swing.JComboBox<String> selec;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;
     private javax.swing.JLabel tabla3;

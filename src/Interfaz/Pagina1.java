@@ -24,9 +24,10 @@ public class Pagina1 extends javax.swing.JFrame {
 
     int mouseX, mouseY;
     
-    private NodoArbol raiz;
-    public Pagina1() {
+    private ArbolDicotomico arbolcargado;
+    public Pagina1(ArbolDicotomico arbol) {
         initComponents();
+        this.arbolcargado = arbol;
     }
 
     /**
@@ -50,9 +51,12 @@ public class Pagina1 extends javax.swing.JFrame {
         plantas2 = new javax.swing.JLabel();
         plantas3 = new javax.swing.JLabel();
         plantas4 = new javax.swing.JLabel();
-        tabla1 = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
         Arbol = new javax.swing.JLabel();
+        MostrarArbolCompleto = new javax.swing.JButton();
+        tabla1 = new javax.swing.JLabel();
+        tabla3 = new javax.swing.JLabel();
+        regresar1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -151,14 +155,41 @@ public class Pagina1 extends javax.swing.JFrame {
         plantas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_3.png"))); // NOI18N
         jPanel1.add(plantas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 150, 300, 200));
-
         tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 200));
 
         Arbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
         jPanel1.add(Arbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+
+        MostrarArbolCompleto.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        MostrarArbolCompleto.setForeground(new java.awt.Color(255, 255, 255));
+        MostrarArbolCompleto.setText("Mostrar Arbol");
+        MostrarArbolCompleto.setBorderPainted(false);
+        MostrarArbolCompleto.setContentAreaFilled(false);
+        MostrarArbolCompleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarArbolCompletoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(MostrarArbolCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 350, 280, 50));
+
+        tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
+        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 300, 200));
+
+        tabla3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
+        jPanel1.add(tabla3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 150, 300, 200));
+
+        regresar1.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        regresar1.setForeground(new java.awt.Color(255, 255, 255));
+        regresar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar1.setText("<<REGRESAR");
+        regresar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(regresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 60));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 460));
 
@@ -200,12 +231,10 @@ public class Pagina1 extends javax.swing.JFrame {
 
     private void manual1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manual1MouseClicked
 
-        Manual manual = new Manual();
+        Manual manual = new Manual(this.arbolcargado);
         manual.setVisible(true);
         this.setVisible(false);
-        ArbolDicotomico arbol = new ArbolDicotomico();
-        arbol.seleccionarYcargarArchivo();
-        arbol.iniciarBusquedaInteractivaConVisual();
+        //arbol.iniciarBusquedaInteractivaConVisual();
         
     }//GEN-LAST:event_manual1MouseClicked
 
@@ -214,11 +243,22 @@ public class Pagina1 extends javax.swing.JFrame {
     }//GEN-LAST:event_siMouseClicked
 
     private void DirectaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DirectaMouseClicked
-        Directa directa = new Directa();
+        Directa directa = new Directa(this.arbolcargado);
         directa.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_DirectaMouseClicked
+
+    private void regresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regresar1MouseClicked
+
+    private void MostrarArbolCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArbolCompletoActionPerformed
+        GraphStreamArbol graph= new GraphStreamArbol("ARBOL");// TODO add your handling code here:
+        graph.construir(this.arbolcargado);
+        graph.mostrar();
+
+    }//GEN-LAST:event_MostrarArbolCompletoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +299,7 @@ public class Pagina1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Arbol;
     private javax.swing.JLabel Directa;
+    private javax.swing.JButton MostrarArbolCompleto;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel manual1;
@@ -267,10 +308,12 @@ public class Pagina1 extends javax.swing.JFrame {
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
     private javax.swing.JLabel regresar;
+    private javax.swing.JLabel regresar1;
     private javax.swing.JLabel si;
     private javax.swing.JLabel si1;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla2;
+    private javax.swing.JLabel tabla3;
     private javax.swing.JLabel tabla_3;
     // End of variables declaration//GEN-END:variables
 }

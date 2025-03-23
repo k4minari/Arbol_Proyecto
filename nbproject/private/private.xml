@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Main/Arbol_Dicotomico.java</file>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Interfaz/Directa.form</file>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Interfaz/Directa.java</file>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Interfaz/Especie_manual.java</file>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Interfaz/Pagina1.java</file>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Logica/ArbolDicotomico.java</file>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Logica/TablaHash.java</file>
-            <file>file:/C:/Users/francisco/Documents/Arbol_Proyecto/Metro_Arbol_Proyecto/src/Interfaz/Menu1.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Main/Arbol_Dicotomico.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Logica/TablaHash.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Logica/ArbolDicotomico.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Interfaz/Pagina1.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Interfaz/Menu1.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Interfaz/Especie_manual.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Logica/CalculoTiempos.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Interfaz/Directa.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Logica/GraphStreamArbol.java</file>
+            <file>file:/C:/Users/cesar/OneDrive/Documents/NetBeansProjects/Arbol_Proyecto/src/Interfaz/Manual.java</file>
         </group>
     </open-files>
 </project-private>

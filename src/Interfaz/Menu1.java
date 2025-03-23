@@ -13,6 +13,7 @@ import Logica.GraphStreamArbol;
 import Logica.NodoArbol;
 import Logica.TablaHash;
 
+
 /**
  *
  * @author ile1
@@ -40,7 +41,7 @@ public class Menu1 extends javax.swing.JFrame {
         unimet = new javax.swing.JLabel();
         tabla_4 = new javax.swing.JLabel();
         titulo3 = new javax.swing.JLabel();
-        cargar = new javax.swing.JLabel();
+        INICIAR = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
         tabla = new javax.swing.JLabel();
         arboles = new javax.swing.JLabel();
@@ -98,17 +99,17 @@ public class Menu1 extends javax.swing.JFrame {
         titulo3.setText("DICOTÓMICO");
         jPanel1.add(titulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, 50));
 
-        cargar.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
-        cargar.setForeground(new java.awt.Color(255, 255, 255));
-        cargar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cargar.setText("INICIAR");
-        cargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargar.addMouseListener(new java.awt.event.MouseAdapter() {
+        INICIAR.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
+        INICIAR.setForeground(new java.awt.Color(255, 255, 255));
+        INICIAR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        INICIAR.setText("INICIAR");
+        INICIAR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        INICIAR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cargarMouseClicked(evt);
+                INICIARMouseClicked(evt);
             }
         });
-        jPanel1.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 170, 60));
+        jPanel1.add(INICIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 170, 60));
 
         titulo1.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
         titulo1.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,12 +176,13 @@ public class Menu1 extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_XMouseClicked
 
-    private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
-
-        Pagina1 pagina = new Pagina1();
+    private void INICIARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INICIARMouseClicked
+        ArbolDicotomico arbol = new ArbolDicotomico();
+        arbol.seleccionarYcargarArchivo();
+        Pagina1 pagina = new Pagina1(arbol);
         pagina.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_cargarMouseClicked
+    }//GEN-LAST:event_INICIARMouseClicked
 
     /**
      * @param args the command line arguments
@@ -219,10 +221,10 @@ public class Menu1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel INICIAR;
     private javax.swing.JLabel X;
     private javax.swing.JLabel arboles;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel cargar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;

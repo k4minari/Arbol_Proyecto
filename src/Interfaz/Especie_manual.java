@@ -4,16 +4,28 @@
  */
 package Interfaz;
 
+import EDDauxiliares.StepList;
+import Logica.ArbolDicotomico;
+import Logica.GraphStreamArbol;
+import Logica.NodoArbol;
+
 /**
  *
  * @author ile1
  */
 public class Especie_manual extends javax.swing.JFrame {
-
+    private ArbolDicotomico arbolcargado;
+    private StepList pasoscargados;
+    private NodoArbol actualcargado;
     int mouseX, mouseY;
     
-    public Especie_manual() {
+    public Especie_manual(ArbolDicotomico arbol, StepList pasos, NodoArbol actual) {
         initComponents();
+        this.arbolcargado=arbol;
+        this.pasoscargados= pasos;
+        this.actualcargado= actual;
+        OUTPUT.setText(actual.getEspecie());
+        
     }
 
     /**
@@ -27,9 +39,9 @@ public class Especie_manual extends javax.swing.JFrame {
 
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        resul = new javax.swing.JLabel();
+        OUTPUT = new javax.swing.JLabel();
         arbol = new javax.swing.JLabel();
-        cargar1 = new javax.swing.JLabel();
+        Regresar = new javax.swing.JLabel();
         tabla_3 = new javax.swing.JLabel();
         tabla_4 = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
@@ -63,11 +75,11 @@ public class Especie_manual extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        resul.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
-        resul.setForeground(new java.awt.Color(255, 255, 255));
-        resul.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        resul.setText("Buscando...");
-        jPanel1.add(resul, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, 50));
+        OUTPUT.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
+        OUTPUT.setForeground(new java.awt.Color(255, 255, 255));
+        OUTPUT.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        OUTPUT.setText("Buscando...");
+        jPanel1.add(OUTPUT, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 140, 430, 50));
 
         arbol.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
         arbol.setForeground(new java.awt.Color(255, 255, 255));
@@ -81,17 +93,17 @@ public class Especie_manual extends javax.swing.JFrame {
         });
         jPanel1.add(arbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 170, 60));
 
-        cargar1.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
-        cargar1.setForeground(new java.awt.Color(255, 255, 255));
-        cargar1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cargar1.setText("REGRESAR");
-        cargar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Regresar.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
+        Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        Regresar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Regresar.setText("REGRESAR");
+        Regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Regresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cargar1MouseClicked(evt);
+                RegresarMouseClicked(evt);
             }
         });
-        jPanel1.add(cargar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 170, 60));
+        jPanel1.add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 170, 60));
 
         tabla_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
         jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, 40));
@@ -154,14 +166,15 @@ public class Especie_manual extends javax.swing.JFrame {
     }//GEN-LAST:event_bgMouseDragged
 
     private void arbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arbolMouseClicked
-
+    GraphStreamArbol grafoRecorrido = new GraphStreamArbol("Recorrido actual");
+     grafoRecorrido.mostrarRecorridoDesdeRaiz(this.arbolcargado.getRaiz(), this.pasoscargados);
     }//GEN-LAST:event_arbolMouseClicked
 
-    private void cargar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar1MouseClicked
-        Pagina1 pagina = new Pagina1();
+    private void RegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMouseClicked
+        Pagina1 pagina = new Pagina1(this.arbolcargado);
         pagina.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_cargar1MouseClicked
+    }//GEN-LAST:event_RegresarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -200,16 +213,16 @@ public class Especie_manual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel OUTPUT;
+    private javax.swing.JLabel Regresar;
     private javax.swing.JLabel arbol;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel cargar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;
     private javax.swing.JLabel plantas3;
     private javax.swing.JLabel plantas4;
     private javax.swing.JLabel rama;
-    public javax.swing.JLabel resul;
     private javax.swing.JLabel tabla;
     private javax.swing.JLabel tabla1;
     private javax.swing.JLabel tabla_3;

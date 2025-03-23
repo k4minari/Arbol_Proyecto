@@ -178,10 +178,10 @@ public class Menu1 extends javax.swing.JFrame {
 
     private void INICIARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_INICIARMouseClicked
         ArbolDicotomico arbol = new ArbolDicotomico();
-        arbol.seleccionarYcargarArchivo();
+        if(arbol.seleccionarYcargarArchivo()){
         Pagina1 pagina = new Pagina1(arbol);
         pagina.setVisible(true);
-        this.setVisible(false);
+        this.setVisible(false);}
     }//GEN-LAST:event_INICIARMouseClicked
 
     /**

@@ -66,7 +66,7 @@ public class ArbolDicotomico {
      * Abre un JFileChooser para que el usuario seleccione un archivo JSON.
      * Luego llama a cargarDesdeJSON(rutaArchivo).
      */
-    public void seleccionarYcargarArchivo() {
+    public boolean seleccionarYcargarArchivo() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Selecciona un archivo JSON");
 
@@ -76,8 +76,9 @@ public class ArbolDicotomico {
             File archivoSeleccionado = fileChooser.getSelectedFile();
             String rutaArchivo = archivoSeleccionado.getAbsolutePath();
             cargarDesdeJSON(rutaArchivo);
+            return true;
         } else {
-            System.out.println("No se selecciono ningun archivo.");
+            return false;
         }
     }
 

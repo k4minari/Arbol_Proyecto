@@ -208,23 +208,51 @@ public class Manual extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Captura las coordenadas del cursor del ratón cuando se presiona el botón sobre el fondo.
+    *
+    * @param evt El evento del ratón que contiene la información del clic.
+    */
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
         mouseX = evt.getX();
         mouseY = evt.getY();
     }//GEN-LAST:event_bgMousePressed
 
+    /**
+    * Maneja el evento de arrastre del ratón sobre el fondo de la ventana.
+    * Permite mover la ventana arrastrando el fondo con el ratón.
+    *
+    * @param evt El evento de arrastre del ratón que contiene la información del evento.
+    */
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_bgMouseDragged
 
+    /**
+    * Maneja el evento de clic del ratón en el botón "regresar".
+    * <p>
+    * Este método crea una instancia de la clase {@code Pagina1}, pasando el árbol cargado actual como argumento.
+    * Luego, hace visible la nueva instancia de {@code Pagina1} y oculta la ventana actual.
+    * </p>
+    *
+    * @param evt El evento de clic del ratón que desencadenó la ejecución de este método.
+    */
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         Pagina1 pagina = new Pagina1(this.arbolcargado);
         pagina.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_regresarMouseClicked
 
+     /**
+     * Maneja el evento de clic en el botón "Sí".
+     *
+     * Este método se ejecuta cuando el usuario hace clic en el botón "Sí" en la interfaz.
+     * Su función principal es avanzar en el árbol de decisiones del sistema experto.
+     *
+     * @param evt El evento ActionEvent generado por el clic en el botón.
+     */
     private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
       if (actual != null) {
         if (actual.getEspecie() == null) {
@@ -252,6 +280,14 @@ public class Manual extends javax.swing.JFrame {
         
     }//GEN-LAST:event_PreguntaPropertyChange
 
+    /**
+     * Maneja el evento cuando el usuario hace clic en el botón "NO".
+     *
+     * Este método navega a través de un árbol de decisiones basado en la respuesta "NO" del usuario.
+     * Actualiza la interfaz de usuario con la siguiente pregunta o muestra la especie identificada.
+     *
+     * @param evt El evento ActionEvent generado por el clic del botón.
+     */
     private void NOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOActionPerformed
        if (actual != null) {
         if (actual.getEspecie() == null) {
@@ -283,6 +319,18 @@ public class Manual extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_regresar2MouseClicked
 
+    /**
+     * Maneja el evento de acción cuando se hace clic en el botón "Mostrar Árbol".
+     * <p>
+     * Este método realiza las siguientes acciones:
+     * 1. Crea una nueva instancia de `GraphStreamArbol` llamada "Recorrido actual".
+     * 2. Llama al método `mostrarRecorridoDesdeRaiz` de `GraphStreamArbol` para mostrar el recorrido del árbol cargado.
+     * 3. El recorrido se muestra desde la raíz del árbol (`this.arbolcargado.getRaiz()`).
+     * 4. Se utiliza la lista de pasos (`this.pasos`) para construir el recorrido.
+     * </p>
+     *
+     * @param evt El evento de acción que desencadenó la llamada a este método.
+     */
     private void MostrarArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarArbolActionPerformed
      GraphStreamArbol grafoRecorrido = new GraphStreamArbol("Recorrido actual");
      grafoRecorrido.mostrarRecorridoDesdeRaiz(this.arbolcargado.getRaiz(), this.pasos);

@@ -51,7 +51,7 @@ public class Manual extends javax.swing.JFrame {
         plantas3 = new javax.swing.JLabel();
         plantas4 = new javax.swing.JLabel();
         tabla2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        arbol = new javax.swing.JLabel();
         regresar1 = new javax.swing.JLabel();
         regresar2 = new javax.swing.JLabel();
         tabla_5 = new javax.swing.JLabel();
@@ -124,7 +124,7 @@ public class Manual extends javax.swing.JFrame {
                 regresarMouseClicked(evt);
             }
         });
-        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 200, 60));
+        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 60));
 
         tabla_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview_1.png"))); // NOI18N
         jPanel1.add(tabla_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
@@ -147,8 +147,8 @@ public class Manual extends javax.swing.JFrame {
         tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 300, 200));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 190));
+        arbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
+        jPanel1.add(arbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 190));
 
         regresar1.setFont(new java.awt.Font("Vineta BT", 0, 18)); // NOI18N
         regresar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,8 +328,8 @@ public class Manual extends javax.swing.JFrame {
     private javax.swing.JButton MostrarArbol;
     public javax.swing.JButton NO;
     public javax.swing.JLabel Pregunta;
+    private javax.swing.JLabel arbol;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;

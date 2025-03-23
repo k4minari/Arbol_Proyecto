@@ -77,7 +77,7 @@ public class Especie_manual extends javax.swing.JFrame {
 
         OUTPUT.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
         OUTPUT.setForeground(new java.awt.Color(255, 255, 255));
-        OUTPUT.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        OUTPUT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         OUTPUT.setText("Buscando...");
         jPanel1.add(OUTPUT, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 140, 430, 50));
 
@@ -112,12 +112,13 @@ public class Especie_manual extends javax.swing.JFrame {
         jPanel1.add(tabla_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, 40));
 
         titulo1.setFont(new java.awt.Font("Vineta BT", 0, 22)); // NOI18N
+        titulo1.setForeground(new java.awt.Color(0, 0, 0));
         titulo1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         titulo1.setText("Conseguiste la especie:");
         jPanel1.add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, 50));
 
         tabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 470, 190));
+        jPanel1.add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 470, 190));
 
         plantas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-branches-and-leaves-png-image_2423895-removebg-preview_1.png"))); // NOI18N
         jPanel1.add(plantas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, -1, -1));
@@ -135,7 +136,7 @@ public class Especie_manual extends javax.swing.JFrame {
         jPanel1.add(rama, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 280, -1));
 
         tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
-        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 430, 190));
+        jPanel1.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 430, 190));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 460));
 

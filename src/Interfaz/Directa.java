@@ -7,8 +7,6 @@ import EDDauxiliares.InfoEspecie;
 import Logica.ArbolDicotomico;
 import Logica.TablaHash;
 import Logica.CalculoTiempos;
-import Logica.NodoArbol;
-import Logica.GraphStreamArbol; 
 /**
  *
  * @author ile1
@@ -55,7 +53,7 @@ public class Directa extends javax.swing.JFrame {
         tabla2 = new javax.swing.JLabel();
         buscar = new javax.swing.JPanel();
         BUSCAR = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        Output = new javax.swing.JScrollPane();
         OUTPUT = new javax.swing.JTextArea();
         tabla3 = new javax.swing.JLabel();
 
@@ -188,9 +186,9 @@ public class Directa extends javax.swing.JFrame {
 
         OUTPUT.setColumns(20);
         OUTPUT.setRows(5);
-        jScrollPane1.setViewportView(OUTPUT);
+        Output.setViewportView(OUTPUT);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 420, 170));
+        jPanel1.add(Output, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 420, 170));
 
         tabla3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-madera-png-pisos-madera-dura_53876-627635-removebg-preview.png"))); // NOI18N
         jPanel1.add(tabla3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 300, 100));
@@ -216,12 +214,7 @@ public class Directa extends javax.swing.JFrame {
         mouseX = evt.getX();
         mouseY = evt.getY();
     }//GEN-LAST:event_bgMousePressed
-    
-    public void guardarItem(){ // PROBANDO (lo puedes borrar si lo necesitas)
-        String[] especies = tabla.getAllKeys();
-        //selec.addItem(especies);
-    
-    }
+
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
@@ -309,11 +302,11 @@ if (buscarPorHash) {
     private javax.swing.JLabel HASH;
     private javax.swing.JComboBox<String> MenuOpcion;
     private javax.swing.JTextArea OUTPUT;
+    private javax.swing.JScrollPane Output;
     private javax.swing.JLabel TIEMPOS;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel buscar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel plantas1;
     private javax.swing.JLabel plantas2;
     private javax.swing.JLabel plantas3;

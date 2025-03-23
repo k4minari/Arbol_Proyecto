@@ -71,6 +71,7 @@ public class CalculoTiempos {
      * @return Un String con el resultado de la comparacion.
      */
     public String compararTiempos(String clave) {
+    
         double tArbol = tiempoBusquedaEnArbolInOrden(clave);
         double tHash  = tiempoBusquedaEnHash(clave);
 

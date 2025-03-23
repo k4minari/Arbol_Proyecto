@@ -4,14 +4,7 @@
  */
 package Interfaz;
 
-import EDDauxiliares.InfoEspecie;
-import EDDauxiliares.Step;
-import EDDauxiliares.StepList;
 import Logica.ArbolDicotomico;
-import Logica.CalculoTiempos;
-import Logica.GraphStreamArbol;
-import Logica.NodoArbol;
-import Logica.TablaHash;
 
 
 /**

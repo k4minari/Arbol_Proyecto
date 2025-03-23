@@ -4,18 +4,8 @@
  */
 package Interfaz;
 
-import EDDauxiliares.InfoEspecie;
-import EDDauxiliares.Step;
-import EDDauxiliares.StepList;
-import Interfaz.Manual;
 import Logica.ArbolDicotomico;
-import Logica.CalculoTiempos;
 import Logica.GraphStreamArbol;
-import Logica.NodoArbol;
-import Logica.TablaHash;
-import java.io.File;
-import javax.swing.JFileChooser;
-import java.util.Scanner;
 /**
  *
  * @author ile1
@@ -161,7 +151,7 @@ public class Pagina1 extends javax.swing.JFrame {
         Arbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-a-big-tree-with-green-leaf-on-transparent-background-genrative-ai-png-image_11931910.png"))); // NOI18N
         jPanel1.add(Arbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
 
-        MostrarArbolCompleto.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        MostrarArbolCompleto.setFont(new java.awt.Font("Vineta BT", 0, 14)); // NOI18N
         MostrarArbolCompleto.setForeground(new java.awt.Color(255, 255, 255));
         MostrarArbolCompleto.setText("Mostrar Arbol");
         MostrarArbolCompleto.setBorderPainted(false);

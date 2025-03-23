@@ -8,15 +8,12 @@ package Logica;
 import EDDauxiliares.InfoEspecie;
 import EDDauxiliares.Step;
 import EDDauxiliares.StepList;
-import Interfaz.Manual;
-import Interfaz.Pagina1;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.*;
 import java.io.File;
-import java.util.Scanner;
 
 /**
  * Clase que representa un arbol dicotomico. Cada nodo puede ser una pregunta
@@ -106,22 +103,8 @@ public class ArbolDicotomico {
 
                 insertarEnArbol(this.raiz, camino, nombreEspecie);
             }
-
-            System.out.println("Arbol cargado correctamente.");
         } catch (Exception e) {
             System.err.println("Error al cargar el JSON: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Imprime en consola la estructura del arbol de forma recursiva.
-     */
-    public void imprimirArbol() {
-        if (raiz == null) {
-            System.out.println("El arbol esta vacio.");
-        } else {
-            System.out.println("Estructura del Arbol Dicotomico:");
-            imprimirRecursivo(raiz, "");
         }
     }
 
@@ -278,24 +261,6 @@ public InfoEspecie buscarInOrdenRec(NodoArbol nodo, String clave, StepList path)
                 }
                 nodo = nodo.getRespuestaNo();
             }
-        }
-    }
-
-    /**
-     * Imprime recursivamente cada nodo (pregunta o especie) con el prefijo dado,
-     * mostrando la rama SI y NO de forma diferenciada.
-     * @param nodo    Nodo actual a imprimir.
-     * @param prefijo Texto que indica la rama y niveles de indentacion.
-     */
-    private void imprimirRecursivo(NodoArbol nodo, String prefijo) {
-        if (nodo != null) {
-            if (nodo.getEspecie() != null) {
-                System.out.println(prefijo + "[ESPECIE] " + nodo.getEspecie());
-            } else {
-                System.out.println(prefijo + "Pregunta: " + nodo.getPregunta());
-            }
-            imprimirRecursivo(nodo.getRespuestaSi(), prefijo + "  ->SI-> ");
-            imprimirRecursivo(nodo.getRespuestaNo(), prefijo + "  ->NO-> ");
         }
     }
 

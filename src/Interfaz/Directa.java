@@ -211,9 +211,9 @@ public class Directa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     /**
-    * Captura las coordenadas del cursor del ratón cuando se presiona el botón sobre el fondo.
+    * Captura las coordenadas del cursor del raton cuando se presiona el boton sobre el fondo.
     *
-    * @param evt El evento del ratón que contiene la información del clic.
+    * @param evt El evento del raton que contiene la informacion del clic.
     */
     
     private void bgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMousePressed
@@ -222,10 +222,10 @@ public class Directa extends javax.swing.JFrame {
     }//GEN-LAST:event_bgMousePressed
     
     /**
-    * Maneja el evento de arrastre del ratón sobre el fondo de la ventana.
-    * Permite mover la ventana arrastrando el fondo con el ratón.
+    * Maneja el evento de arrastre del raton sobre el fondo de la ventana.
+    * Permite mover la ventana arrastrando el fondo con el raton.
     *
-    * @param evt El evento de arrastre del ratón que contiene la información del evento.
+    * @param evt El evento de arrastre del raton que contiene la informacion del evento.
     */
     private void bgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseDragged
         int x = evt.getXOnScreen();
@@ -234,15 +234,15 @@ public class Directa extends javax.swing.JFrame {
     }//GEN-LAST:event_bgMouseDragged
 
     /**
-    * Maneja el evento de clic del ratón en el componente HASH.
+    * Maneja el evento de clic del raton en el componente HASH.
     *
-    * Este método se invoca cuando el usuario hace clic en el componente HASH.
-    * Establece la variable 'buscarPorHash' a 'true' para indicar que la búsqueda
-    * se realizará utilizando una tabla hash. También actualiza el texto del
-    * componente OUTPUT para informar al usuario que el modo de búsqueda ha
+    * Este metodo se invoca cuando el usuario hace clic en el componente HASH.
+    * Establece la variable 'buscarPorHash' a 'true' para indicar que la busqueda
+    * se realizara utilizando una tabla hash. Tambien actualiza el texto del
+    * componente OUTPUT para informar al usuario que el modo de busqueda ha
     * cambiado a "Hash Table".
     *
-    * @param evt El evento de clic del ratón que disparó este método.
+    * @param evt El evento de clic del raton que disparo este metodo.
     */
     private void HASHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HASHMouseClicked
         buscarPorHash = true;
@@ -250,14 +250,14 @@ public class Directa extends javax.swing.JFrame {
     }//GEN-LAST:event_HASHMouseClicked
 
     /**
-    * Maneja el evento de clic del ratón en el componente 'regresar1'.
+    * Maneja el evento de clic del raton en el componente 'regresar1'.
     *
-    * Este método realiza las siguientes acciones:
-    * 1.  Crea una nueva instancia de la clase 'Pagina1', pasando el árbol cargado actual como argumento.
+    * Este metodo realiza las siguientes acciones:
+    * 1.  Crea una nueva instancia de la clase 'Pagina1', pasando el arbol cargado actual como argumento.
     * 2.  Hace visible la nueva instancia de 'Pagina1'.
     * 3.  Oculta la ventana actual.
     *
-    * @param evt El evento de clic del ratón que desencadenó esta acción.
+    * @param evt El evento de clic del raton que desencadeno esta accion.
     */
     private void regresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar1MouseClicked
         Pagina1 pagina = new Pagina1(this.arbolcargado);
